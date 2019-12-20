@@ -14,9 +14,7 @@ const Button = styled(Link).attrs(props => ({
     margin-bottom: ${props => props.mb};
     margin-left: ${props => props.ml};
     margin-right: ${props => props.mr};
-    color: ${props => (props.variant === "secondary" ? "#000000" : "#ffffff")};
-    background: ${props => (props.variant === "secondary" ? "rgba(0,0,0,0)" : "#000000")};
-    border: 3px solid black;
+    border: 3px solid rgba(0,0,0,0);
     text-decoration: none;
     text-align: center;
     text-transform: uppercase;
@@ -24,10 +22,52 @@ const Button = styled(Link).attrs(props => ({
     font-size: 14px;
     letter-spacing: 1px;
     transition: all 0.3s;
-    &:hover {
-        background: ${props => (props.variant === "secondary" ? "rgba(0,0,0,0.05)" : "#d9ae6d")};
-        border-color: ${props => (props.variant === "secondary" ? "#000000" : "#d9ae6d")}
+    ${props => {
+    if (props.variant === "secondary") {
+      return `
+        background: rgba(0,0,0,0);
+        color: #000000;
+        border-color: black;
+        &:hover {
+            background: rgba(0,0,0,0.05);
+        }
+    `
+    } else if (props.variant === "tertiary") {
+      return `
+        background: rgba(0,0,0,0);
+        color: #000000;
+        &:hover {
+            background: rgba(0,0,0,0.05);
+            color: black;
+        }
+    `
+    } else if (props.variant === "success") {
+      return `
+        background: #00cf0a;
+        color: #ffffff;
+        &:hover {
+            background: #00b509;
+        }
+    `
+    } else if (props.variant === "danger") {
+      return `
+        background: #e80000;
+        color: #ffffff;
+        &:hover {
+            background: #cf0000;
+        }
+    `
+    } else {
+      return `
+        background: #d9ae6d;
+        color: #ffffff;
+        &:hover {
+            background: black;
+            color: white;
+        }
+    `
     }
+  }}
 `
 
 export default Button

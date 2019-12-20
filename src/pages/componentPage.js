@@ -16,7 +16,10 @@ const Hero = styled.section`
 const ComponentGroup = styled.div`
     padding: 3rem 0;
     h2 {
-        margin-bottom: 3rem;
+        margin-bottom: 0rem;
+    }
+    h3 {
+        margin-top: 4rem;
     }
 `
 
@@ -33,10 +36,15 @@ const ComponentPage = () => {
                         <ComponentGroup>
                             <h2>Buttons</h2>
                             <Button mr="2em">Primary Button</Button>
-                            <Button variant="secondary">Secondary Button</Button>
+                            <Button variant="secondary" mr="2em">Secondary Button</Button>
+                            <Button variant="tertiary" mt="2em">Tertiary Button</Button>
                             <br></br>
                             <Button size="large" mt="2em" mr="2em">Large Primary Button</Button>
-                            <Button variant="secondary" size="large" mt="2em">Large Secondary Button</Button>
+                            <Button variant="secondary" size="large" mt="2em" mr="2em">Large Secondary Button</Button>
+                            <Button variant="tertiary" size="large" mt="2em">Tertiary Button</Button>
+                            <h3>Status Buttons</h3>
+                            <Button variant="success" mr="2em">Success!</Button>
+                            <Button variant="danger">Warning!</Button>
                         </ComponentGroup>
                     </Container>
                 </section>
