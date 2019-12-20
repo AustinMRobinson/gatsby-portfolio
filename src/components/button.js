@@ -38,7 +38,6 @@ const Button = styled(Link).attrs(props => ({
         color: #000000;
         &:hover {
             background: rgba(0,0,0,0.05);
-            color: black;
         }
     `
     } else if (props.variant === "success") {
@@ -59,11 +58,9 @@ const Button = styled(Link).attrs(props => ({
     `
     } else {
       return `
-        background: #d9ae6d;
-        color: #ffffff;
+        background: black;
         &:hover {
-            background: black;
-            color: white;
+            background: #d9ae6d;
         }
     `
     }
