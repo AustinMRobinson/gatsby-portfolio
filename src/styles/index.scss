@@ -9,7 +9,11 @@ html {
     margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background: #f6f6f6;
+    border: 12px solid white;
+    min-height: 100vh;
   }
+
   article,
   aside,
   details,
@@ -24,6 +28,12 @@ html {
   summary {
     display: block;
   }
+
+  .container {
+    margin: 0 auto;
+    max-width: 960px;
+  }
+  
   audio,
   canvas,
   progress,
