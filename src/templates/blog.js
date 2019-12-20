@@ -1,5 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import styled from 'styled-components'
 import Layout from '../components/layout'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import Head from "../components/head"
@@ -16,6 +17,15 @@ export const query = graphql`
   }
 `
 
+const Hero = styled.section`
+    padding: 5rem 0 2rem 0;
+    color: white;
+    background: black;
+    margin-bottom: 3rem;
+    h1 {
+        font-size: 56px;
+    }
+`
 
 const Blog = (props) => {
   // used to grab and render images from the body JSON. Passed in after
@@ -32,9 +42,15 @@ const Blog = (props) => {
     return (
         <Layout>
           <Head title={props.data.contentfulBlogPost.title} />
-          <h1>{props.data.contentfulBlogPost.title}</h1>
-          <p>{props.data.contentfulBlogPost.publishedDate}</p>
-          {documentToReactComponents(props.data.contentfulBlogPost.body.json, options)}
+          <Hero>
+            <Container>
+              <h1>{props.data.contentfulBlogPost.title}</h1>
+            </Container>
+          </Hero>
+          <Container>
+            <p>{props.data.contentfulBlogPost.publishedDate}</p>
+            {documentToReactComponents(props.data.contentfulBlogPost.body.json, options)}
+          </Container>
         </Layout>
     )
 }
