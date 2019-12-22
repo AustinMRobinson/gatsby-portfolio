@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import "../styles/index.scss"
 import Container from './container';
 import { layer1, foreground, lightForeground, transparent, moreTransparent, evenTransparent } from '../theme.js'
-import ToggleMode from './ToggleMode';
+import ToggleMode from '..components/ToggleMode.js';
 
 const HeaderStyles = styled.header`
     padding: .5rem 0;
