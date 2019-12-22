@@ -1,8 +1,9 @@
 import {Link } from 'gatsby'
 import styled from "styled-components"
+import { foreground, accent } from "../theme.js"
 
 const StyledLink = styled(Link)`
-    color: black;
+    color: ${foreground};
     text-decoration: none;
     text-transform: uppercase;
     font-weight: 600;
@@ -10,7 +11,7 @@ const StyledLink = styled(Link)`
     letter-spacing: 1px;
     transition: all 0.3s;
     &:hover {
-        color: #d9ae6d;
+        color: ${accent};
     }
 `
 

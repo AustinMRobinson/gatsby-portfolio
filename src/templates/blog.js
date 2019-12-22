@@ -1,5 +1,5 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import { Link, graphql } from 'gatsby'
 import styled from 'styled-components'
 import Layout from '../components/layout'
 import Container from "../components/container"
@@ -20,8 +20,8 @@ export const query = graphql`
 
 const Hero = styled.section`
     padding: 5rem 0 2rem 0;
-    color: white;
-    background: black;
+    color: ${props => props.theme.negative};
+    background: ${props => props.theme.foreground};
     margin-bottom: 3rem;
     h1 {
         font-size: 56px;
@@ -45,6 +45,7 @@ const Blog = (props) => {
           <Head title={props.data.contentfulBlogPost.title} />
           <Hero>
             <Container>
+              <Link to="/blog">Back to Blog</Link>
               <h1>{props.data.contentfulBlogPost.title}</h1>
             </Container>
           </Hero>

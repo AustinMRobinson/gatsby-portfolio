@@ -1,18 +1,8 @@
 import React from "react"
 import Layout from '../components/layout'
-import styled from 'styled-components'
 import Head from "../components/head"
 import Container from "../components/container"
-
-const Hero = styled.section`
-    padding: 5rem 0 2rem 0;
-    color: white;
-    background: black;
-    margin-bottom: 3rem;
-    h1 {
-        font-size: 56px;
-    }
-`
+import Hero from "../components/hero"
 
 const ContactPage = () => {
     return (

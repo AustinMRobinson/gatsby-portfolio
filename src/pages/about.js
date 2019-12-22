@@ -1,19 +1,9 @@
 import React from "react"
 import { Link } from "gatsby"
-import styled from 'styled-components'
 import Layout from '../components/layout'
 import Head from "../components/head"
 import Container from "../components/container"
-
-const Hero = styled.section`
-    padding: 5rem 0 2rem 0;
-    color: white;
-    background: black;
-    margin-bottom: 3rem;
-    h1 {
-        font-size: 56px;
-    }
-`
+import Hero from "../components/hero"
 
 const AboutPage = () => {
     return (

@@ -6,28 +6,45 @@ import CTATile from "../components/ctaTile"
 import PageCTA from "../components/pageCTA"
 import Container from "../components/container"
 import styled from "styled-components"
+import Hero from "../components/hero"
+import { lightForeground, foreground } from "../theme.js"
+import Icon from "../components/icon.js"
 
-const Hero = styled.section`
-    background: black;
-    color: white;
-    padding: 8rem 0 14rem 0;
+const IndexHero = styled(Hero)`
+    padding: 8rem 0 4rem 0;
     text-align: center;
     h1 {
       font-size: 96px;
+      font-weight: 400;
+      max-width: 90%;
+      margin: 0 auto;
     }
 `
 
 const Role = styled.p`
-    color: white;
+    color: ${lightForeground};
     text-transform: uppercase;
     font-weight: bold;
     font-size: 1rem;
     letter-spacing: 1px;
     margin: 2rem 0 3rem;
+    display: inline-flex;
+
+`
+
+const CompanyIcon = styled(Icon)`
+    margin-left: .5rem;
+    fill: ${lightForeground};
+    transition: all 0.1s ease-in-out;
+    width: 24px;
+    height: 24px;
+    &:hover {
+        fill: ${foreground};
+    }
 `
 
 const Intro = styled.p`
-    color: rgba(255,255,255,0.6);
+    color: ${lightForeground};
     font-size: 1.33rem;
     line-height: 1.75rem;
     max-width: 80%;
@@ -35,7 +52,7 @@ const Intro = styled.p`
 `
 
 const CTATiles = styled.section`
-    margin-top: -100px;
+    padding: 1rem;
 `
 
 const TileWrapper = styled.div`
@@ -75,34 +92,16 @@ const IndexPage = () => {
               page1Text
             }
             page1Link
-            page1Icon {
-              file {
-                url
-              }
-              title
-            }
             page2Heading
             page2Text {
               page2Text
             }
             page2Link
-            page2Icon {
-              file {
-                url
-              }
-              title
-            }
             page3Heading
             page3Text {
               page3Text
             }
             page3Link
-            page3Icon {
-              file {
-                url
-              }
-              title
-            }
         }
     }
 `)
@@ -124,29 +123,23 @@ const tile2Status = data.contentfulHomepage.tile2Status
 const page1Heading = data.contentfulHomepage.page1Heading
 const page1Text = data.contentfulHomepage.page1Text.page1Text
 const page1Link = data.contentfulHomepage.page1Link
-const page1IconUrl = data.contentfulHomepage.page1Icon.file.url
-const page1IconAlt = data.contentfulHomepage.page1Icon.title
 const page2Heading = data.contentfulHomepage.page2Heading
 const page2Text = data.contentfulHomepage.page2Text.page2Text
 const page2Link = data.contentfulHomepage.page2Link
-const page2IconUrl = data.contentfulHomepage.page2Icon.file.url
-const page2IconAlt = data.contentfulHomepage.page2Icon.title
 const page3Heading = data.contentfulHomepage.page3Heading
 const page3Text = data.contentfulHomepage.page3Text.page3Text
 const page3Link = data.contentfulHomepage.page3Link
-const page3IconUrl = data.contentfulHomepage.page3Icon.file.url
-const page3IconAlt = data.contentfulHomepage.page3Icon.title
 
     return (
         <Layout>
             <Head title="Home" />
-            <Hero id="hero">
+            <IndexHero id="hero">
                 <Container>
                     <h1>{title}</h1>
-                    <Role>{role} at <Link to={companyLink}><img alt={companyName}></img></Link></Role>
+                    <Role>{role} at <Link to={companyLink}><CompanyIcon name={companyName} title={companyName}></CompanyIcon></Link></Role>
                     <Intro>{intro}</Intro>
                 </Container>
-            </Hero>
+            </IndexHero>
             <CTATiles id="cta-tiles">
                 <Container>
                     <TileWrapper>
@@ -167,24 +160,24 @@ const page3IconAlt = data.contentfulHomepage.page3Icon.title
                 <Container>
                     <TileWrapper>
                         <PageCTA
-                            url={page1IconUrl}
-                            alt={page1IconAlt}
+                            name={page1Heading}
+                            alt={page1Heading}
                             heading={page1Heading}
                             text={page1Text}
                             link={page1Link}
                             linktext="Learn More"
                         />
                         <PageCTA
-                            url={page2IconUrl}
-                            alt={page2IconAlt}
+                            name={page2Heading}
+                            alt={page2Heading}
                             heading={page2Heading}
                             text={page2Text}
                             link={page2Link}
                             linktext="More Pixels"
                         />
                         <PageCTA
-                            url={page3IconUrl}
-                            alt={page3IconAlt}
+                            name={page3Heading}
+                            alt={page3Heading}
                             heading={page3Heading}
                             text={page3Text}
                             link={page3Link}

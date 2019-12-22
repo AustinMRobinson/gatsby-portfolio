@@ -3,18 +3,19 @@ import { graphql, useStaticQuery } from 'gatsby'
 import styled from 'styled-components'
 import Container from '../components/container'
 import StyledLink from '../components/styledlink'
+import { foreground, kindaLightForeground, lightForeground, layer1} from "../theme.js"
 
 const FooterStyles = styled.footer`
-    background: black;
-    color: white;
+    background: ${layer1};
+    color: ${kindaLightForeground};
     padding: 4rem 0 2rem 0;
-    margin-top: 4rem;
+    margin-top: 6rem;
     ${StyledLink} {
-        color: rgba(255,255,255,0.75);
+        color: ${lightForeground};
         padding: 0;
         margin-right: 2rem;
         &:hover {
-            color: white;
+            color: ${foreground};
         }
     }
     ul {
@@ -26,7 +27,6 @@ const FooterStyles = styled.footer`
     }
     p {
         font-size: 14px;
-        color: #adadad;
     }
 `
 
@@ -49,7 +49,7 @@ const Footer = () => {
                 <li><StyledLink to="/blog">Blog</StyledLink></li>
                 <li><StyledLink to="/about">About Me</StyledLink></li>
                 <li><StyledLink to="/contact">Contact Me</StyledLink></li>
-                <li><StyledLink to="/componentpage">Components</StyledLink></li>
+                <li><StyledLink to="/componentPage">Components</StyledLink></li>
             </ul>
                 <p>Created by {data.site.siteMetadata.author} © 2019</p>
             </Container>

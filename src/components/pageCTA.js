@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import StyledLink from './styledlink.js'
+import { lightForeground, foreground } from "../theme.js"
+import Icon from "../components/icon.js"
 
 const Div = styled.div`
     width: 30%;
@@ -11,14 +13,19 @@ const Div = styled.div`
 `
 
 const Text = styled.p`
-    color: #737373;
+    color: ${lightForeground};
+    margin-bottom: 2rem;
+`
+
+const PageCTAIcon = styled(Icon)`
+    fill: ${foreground};
     margin-bottom: 2rem;
 `
 
 const PageCTA = (props) => {
     return (
         <Div>
-            <img src={props.url} alt={props.alt} width="40px" height="40px"></img>
+            <PageCTAIcon title={props.alt} name={props.name} width="44px" height="44px" />
             <h3>{props.heading}</h3>
             <Text>{props.text}</Text>
             <StyledLink to={props.link}>{props.linktext}</StyledLink>

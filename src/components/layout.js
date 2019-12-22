@@ -1,8 +1,21 @@
 import React from 'react'
-import styled from 'styled-components'
 import Footer from '../components/footer'
 import Header from '../components/header'
-import "../styles/index.scss"
+import styled, {ThemeProvider, createGlobalStyle} from "styled-components"
+import useTheme from '../useTheme';
+import { foreground, layer0 } from "../theme.js"
+
+const GlobalStyle = createGlobalStyle`
+body {
+  background: ${layer0};
+  color: ${foreground};
+  ${'' /* border: 12px solid ${layer2}; */}
+  transition: all 0.5s ease-in-out;
+}
+h1, h2, h3, h4, h5, h6 {
+    color: ${foreground};
+}
+`;
 
 const LayoutWrapper = styled.div`
     display: flex;
@@ -10,17 +23,25 @@ const LayoutWrapper = styled.div`
     min-height: 100vh;
 `
 
+const Upper = styled.div`
+    flex-grow: 2;
+`
+
 const Layout = (props) => {
+    const theme = useTheme()
     return (
-        <LayoutWrapper>
-            <div>            
-                <Header></Header>
-                <div>
-                    {props.children}
-                </div>
-            </div>
-            <Footer></Footer>
-        </LayoutWrapper>
+        <ThemeProvider theme={theme}>
+            <LayoutWrapper>
+                <Upper>
+                    <GlobalStyle />
+                    <Header></Header>
+                    <div>
+                        {props.children}
+                    </div>
+                </Upper>
+                <Footer></Footer>
+            </LayoutWrapper>
+        </ThemeProvider>
     )
 }
 

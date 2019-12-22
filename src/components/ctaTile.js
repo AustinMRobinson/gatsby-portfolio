@@ -1,6 +1,8 @@
 import React from 'react'
 import Button from '../components/button'
 import styled from 'styled-components'
+import { layer2, lightForeground } from '../theme.js'
+
 
 const Tile = styled.div`
     display: inline-block;
@@ -8,20 +10,20 @@ const Tile = styled.div`
 `
 
 const TileInfo = styled.div`
-    padding: 2rem 3rem 1rem 3rem;
-    background: white;
+    padding: 3rem 3rem 1.5rem 3rem;
     text-align: center;
+    background: ${layer2};
     h2 {
         margin: 0;
         font-size: 40px;
     }
     p {
-        color: #737373;
+        color: ${lightForeground};
     }
 `
 
 const Status = styled.p`
-    color: #adadad;
+    color: ${lightForeground};
     text-transform: uppercase;
     font-weight: 600;
     font-size: 14px;
