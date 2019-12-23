@@ -7,11 +7,11 @@ import { foreground, kindaLightForeground, lightForeground, layer1} from "../the
 
 const FooterStyles = styled.footer`
     background: ${layer1};
-    color: ${kindaLightForeground};
+    color: ${lightForeground};
     padding: 4rem 0 2rem 0;
     margin-top: 6rem;
     ${StyledLink} {
-        color: ${lightForeground};
+        color: ${kindaLightForeground};
         padding: 0;
         margin-right: 2rem;
         &:hover {

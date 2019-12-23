@@ -4,7 +4,9 @@ import styled from 'styled-components'
 import Layout from '../components/layout'
 import Container from "../components/container"
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
-import Head from "../components/head"
+import Head from "../components/head.js"
+import Hero from "../components/hero.js"
+import { lightForeground, foreground, transparent } from "../theme.js"
 
 export const query = graphql`
   query($slug: String!) {
@@ -18,13 +20,26 @@ export const query = graphql`
   }
 `
 
-const Hero = styled.section`
-    padding: 5rem 0 2rem 0;
-    color: ${props => props.theme.negative};
-    background: ${props => props.theme.foreground};
+const BlogHero = styled(Hero)`
+    padding: 2rem 0 2rem 0;
     margin-bottom: 3rem;
     h1 {
+        margin-top: 2rem;
         font-size: 56px;
+    }
+`
+
+const BlogLink = styled(Link)`
+    font-size: .8rem;
+    padding: 8px 12px;
+    border-radius: 24px;
+    text-decoration: none;
+    margin-left: -12px;
+    color: ${lightForeground};
+    transition: 0.3s all ease-in-out;
+    &:hover {
+      color: ${foreground};
+      background: ${transparent};
     }
 `
 
@@ -43,12 +58,12 @@ const Blog = (props) => {
     return (
         <Layout>
           <Head title={props.data.contentfulBlogPost.title} />
-          <Hero>
+          <BlogHero>
             <Container>
-              <Link to="/blog">Back to Blog</Link>
+              <BlogLink to="/blog">Back to Blog</BlogLink>
               <h1>{props.data.contentfulBlogPost.title}</h1>
             </Container>
-          </Hero>
+          </BlogHero>
           <Container>
             <p>{props.data.contentfulBlogPost.publishedDate}</p>
             {documentToReactComponents(props.data.contentfulBlogPost.body.json, options)}

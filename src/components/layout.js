@@ -2,7 +2,7 @@ import React from 'react'
 import Footer from '../components/footer'
 import Header from '../components/header'
 import styled, {ThemeProvider, createGlobalStyle} from "styled-components"
-import useTheme from '../useTheme.js';
+import useTheme from '../usetheme.js';
 import { foreground, layer0 } from "../theme.js"
 
 const GlobalStyle = createGlobalStyle`
