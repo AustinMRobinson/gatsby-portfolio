@@ -7,7 +7,7 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import Head from "../components/head.js"
 import Hero from "../components/hero.js"
 import { lightForeground } from "../theme.js"
-import Img from "gatsby-image"
+// import Img from "gatsby-image"
 
 export const query = graphql`
   query($slug: String!) {
