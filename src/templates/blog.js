@@ -7,19 +7,17 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import Head from "../components/head.js"
 import Hero from "../components/hero.js"
 import { lightForeground } from "../theme.js"
-// import Img from "gatsby-image"
+import Img from "gatsby-image"
 
-export const query = graphql`
+export const data = graphql`
   query($slug: String!) {
     contentfulBlogPost(slug: {eq: $slug}) {
         title
         publishedDate (formatString:"MMMM Do, YYYY")
         postThumbnail {
-          fixed {
+          fluid(quality: 80) {
             src
-          }
-          file {
-            url
+            srcSet
           }
           title
         }
@@ -94,7 +92,7 @@ const Blog = (props) => {
             </BlogContentContainer>
           </BlogHero>
           <BlogContainer>
-            <img src={props.data.contentfulBlogPost.postThumbnail.file.url} alt={props.data.contentfulBlogPost.postThumbnail.title}></img>
+            <Img fluid={props.data.contentfulBlogPost.postThumbnail.fluid} alt={props.data.contentfulBlogPost.postThumbnail.title} draggable="false"></Img>
           </BlogContainer>
           <BlogContentContainer>
             {documentToReactComponents(props.data.contentfulBlogPost.body.json, options)}

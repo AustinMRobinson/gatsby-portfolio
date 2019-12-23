@@ -46,7 +46,7 @@ const ComponentPage = () => {
                         <br></br>
                         <Button size="large" mt="2em" mr="2em">Large Primary Button</Button>
                         <Button variant="secondary" size="large" mt="2em" mr="2em">Large Secondary Button</Button>
-                        <Button variant="tertiary" size="large" mt="2em">Tertiary Button</Button>
+                        <Button variant="tertiary" size="large" mt="2em">Large Tertiary Button</Button>
                         <h3>Status Buttons</h3>
                         <Button variant="success" mr="2em">Success!</Button>
                         <Button variant="warning">Warning!</Button>

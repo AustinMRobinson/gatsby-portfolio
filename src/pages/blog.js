@@ -6,6 +6,7 @@ import Head from "../components/head"
 import Container from "../components/container"
 import Hero from "../components/hero"
 import { foreground, lightForeground, kindaLightForeground, lessTransparent, evenLessTransparent } from "../theme.js"
+import Img from 'gatsby-image'
 
 const BlogPosts = styled.ul ` 
     list-style-type: none;
@@ -23,11 +24,7 @@ const BlogImage = styled.div`
     display: flex;
     align-content: center;
     justify-content: center;
-    img {
-        width: 100%;
-        object-fit: cover;
-        transition: 0.3s all;
-    }
+}
 `
 
 const BlogPost = styled.li `
@@ -51,9 +48,6 @@ const BlogPost = styled.li `
         h2 {
             color: ${foreground};
         }
-        img {
-            transform: scale(1.1);
-        }
         ${BlogImage} {
             box-shadow: 0 36px 72px -10px ${lessTransparent}, 0 24px 44px -18px ${lessTransparent};
         }
@@ -63,28 +57,27 @@ const BlogPost = styled.li `
 const BlogPage = () => {
     const data = useStaticQuery(graphql`
     query {
-        allContentfulBlogPost(
-          sort: {
-            fields:publishedDate,
-            order:DESC
-          }
-        ) {
+        allContentfulBlogPost(sort: {fields: publishedDate, order: DESC}) {
           edges {
             node {
               postThumbnail {
-                file {
-                  url
+                fixed (width: 600, quality: 80) {
+                    width
+                    height
+                    src
+                    srcSet
                 }
                 title
               }
               title
               slug
-              publishedDate (formatString:"MMMM Do, YYYY")
+              publishedDate(formatString: "MMMM Do, YYYY")
             }
           }
         }
       }
     `)
+
 
     return (
         <Layout>
@@ -101,7 +94,7 @@ const BlogPage = () => {
                             <BlogPost>  
                                 <Link to={`/blog/${edge.node.slug}`}>
                                     <BlogImage>
-                                        <img src={edge.node.postThumbnail.file.url} alt={edge.node.postThumbnail.title}></img>
+                                        <Img fixed={edge.node.postThumbnail.fixed} alt={edge.node.postThumbnail.title} draggable="false"></Img>
                                     </BlogImage>
                                     <h2>{edge.node.title}</h2>
                                     <p>{edge.node.publishedDate}</p>

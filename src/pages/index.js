@@ -1,5 +1,5 @@
 import React from "react"
-import { Link, useStaticQuery, graphql } from 'gatsby'
+import { useStaticQuery, graphql } from 'gatsby'
 import Layout from '../components/layout'
 import Head from "../components/head"
 import CTATile from "../components/ctaTile"
@@ -136,7 +136,7 @@ const page3Link = data.contentfulHomepage.page3Link
             <IndexHero id="hero">
                 <Container>
                     <h1>{title}</h1>
-                    <Role>{role} at <Link to={companyLink}><CompanyIcon name={companyName} title={companyName}></CompanyIcon></Link></Role>
+                    <Role>{role} at <a href={companyLink}><CompanyIcon name={companyName} title={companyName}></CompanyIcon></a></Role>
                     <Intro>{intro}</Intro>
                 </Container>
             </IndexHero>
