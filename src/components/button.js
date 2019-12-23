@@ -68,6 +68,7 @@ const borderColor = theme.variants("mode", "variant", {
     transition: all 0.3s;
     color: ${color};
     background: ${backgroundColor};
+    cursor: pointer;
     &:hover {
         background: ${hover};
     }
