@@ -15,7 +15,9 @@ export const data = graphql`
         title
         publishedDate (formatString:"MMMM Do, YYYY")
         postThumbnail {
-          fluid(quality: 80) {
+          fixed(width:900 quality: 80) {
+            width
+            height
             src
             srcSet
           }
@@ -56,9 +58,6 @@ const BlogHero = styled(Hero)`
 
 const BlogContainer = styled(Container)`
     max-width: 900px;
-    img {
-      margin-bottom: 4rem;
-    }
 `
 
 const BlogContentContainer = styled(Container)`
@@ -67,6 +66,10 @@ const BlogContentContainer = styled(Container)`
 
 const BlogDate = styled.p`
     color ${lightForeground};
+`
+
+const BlogImg = styled(Img)`
+    margin: 0 auto 4rem auto;
 `
 
 const Blog = (props) => {
@@ -92,7 +95,7 @@ const Blog = (props) => {
             </BlogContentContainer>
           </BlogHero>
           <BlogContainer>
-            <Img fluid={props.data.contentfulBlogPost.postThumbnail.fluid} alt={props.data.contentfulBlogPost.postThumbnail.title} draggable="false"></Img>
+            <BlogImg fixed={props.data.contentfulBlogPost.postThumbnail.fixed} alt={props.data.contentfulBlogPost.postThumbnail.title} draggable="false"></BlogImg>
           </BlogContainer>
           <BlogContentContainer>
             {documentToReactComponents(props.data.contentfulBlogPost.body.json, options)}
