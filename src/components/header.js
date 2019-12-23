@@ -3,16 +3,15 @@ import { Link } from 'gatsby'
 import styled from 'styled-components'
 import "../styles/index.scss"
 import Container from './container';
-import { layer1, foreground, lightForeground, transparent, moreTransparent, evenTransparent } from '../theme.js'
+import { foreground, lightForeground, transparent, evenTransparent } from '../theme.js'
 import ToggleMode from '../components/togglemode.js';
 
 const HeaderStyles = styled.header`
     padding: .5rem 0;
-    background: ${layer1};
-    position: sticky;
+    ${'' /* background: ${layer1}; */}
     top: 0;
     width: 100%;
-    box-shadow: 0 30px 60px -10px ${moreTransparent}, 0 18px 36px -18px ${moreTransparent};
+    ${'' /* box-shadow: 0 30px 60px -10px ${moreTransparent}, 0 18px 36px -18px ${moreTransparent}; */}
     nav {
         display: flex;
         justify-content: space-between;

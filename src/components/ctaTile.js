@@ -1,7 +1,7 @@
 import React from 'react'
 import Button from '../components/button'
 import styled from 'styled-components'
-import { layer2, lightForeground } from '../theme.js'
+import { layer1, lightForeground } from '../theme.js'
 
 
 const Tile = styled.div`
@@ -12,7 +12,7 @@ const Tile = styled.div`
 const TileInfo = styled.div`
     padding: 3rem 3rem 1.5rem 3rem;
     text-align: center;
-    background: ${layer2};
+    background: ${layer1};
     h2 {
         margin: 0;
         font-size: 40px;

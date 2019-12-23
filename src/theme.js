@@ -2,12 +2,12 @@ import theme from 'styled-theming';
 
 export const layer0 = theme('mode', {
   light: '#ebebeb',
-  dark: '#000000'
+  dark: '#0f0f0f'
 });
 
 export const layer1 = theme('mode', {
   light: '#f6f6f6',
-  dark: '#0f0f0f'
+  dark: '#1a1a1a'
 });
 
 export const layer2 = theme('mode', {
@@ -16,7 +16,7 @@ export const layer2 = theme('mode', {
 });
 
 export const foreground = theme('mode', {
-  light: '#000000',
+  light: '#0f0f0f',
   dark: '#ffffff'
 });
 
@@ -28,6 +28,11 @@ export const kindaLightForeground = theme('mode', {
 export const lightForeground = theme('mode', {
   light: '#737373',
   dark: '#adadad'
+})
+
+export const evenMoreTransparent = theme('mode', {
+  light: 'rgba(0,0,0,0.1)',
+  dark: 'rgba(255,255,255,0.1)'
 })
 
 export const moreTransparent = theme('mode', {

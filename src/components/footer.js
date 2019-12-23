@@ -3,16 +3,16 @@ import { graphql, useStaticQuery } from 'gatsby'
 import styled from 'styled-components'
 import Container from '../components/container'
 import StyledLink from '../components/styledlink'
-import { foreground, kindaLightForeground, lightForeground, layer1} from "../theme.js"
+import { foreground, kindaLightForeground, lightForeground, evenMoreTransparent} from "../theme.js"
 
 const FooterStyles = styled.footer`
-    background: ${layer1};
+    ${'' /* background: ${layer0}; */}
     color: ${lightForeground};
-    padding: 4rem 0 2rem 0;
     margin-top: 6rem;
     ${StyledLink} {
         color: ${kindaLightForeground};
         padding: 0;
+        font-size: 0.7rem;
         margin-right: 2rem;
         &:hover {
             color: ${foreground};
@@ -30,6 +30,13 @@ const FooterStyles = styled.footer`
     }
 `
 
+const FooterContainer = styled(Container)`
+    border-top: 1px solid ${evenMoreTransparent};
+    padding: 4rem 0 2rem 0;
+    display: flex;
+    justify-content: space-between;
+`
+
 const Footer = () => {
 
     const data = useStaticQuery(graphql`
@@ -44,7 +51,7 @@ const Footer = () => {
 
     return (
         <FooterStyles>
-            <Container>
+            <FooterContainer>
             <ul>
                 <li><StyledLink to="/blog">Blog</StyledLink></li>
                 <li><StyledLink to="/about">About Me</StyledLink></li>
@@ -52,7 +59,7 @@ const Footer = () => {
                 <li><StyledLink to="/componentPage">Components</StyledLink></li>
             </ul>
                 <p>Created by {data.site.siteMetadata.author} © 2019</p>
-            </Container>
+            </FooterContainer>
         </FooterStyles>
     )
 }

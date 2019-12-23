@@ -1,18 +1,28 @@
 import React from 'react'
-import { Link, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 import styled from 'styled-components'
 import Layout from '../components/layout'
 import Container from "../components/container"
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import Head from "../components/head.js"
 import Hero from "../components/hero.js"
-import { lightForeground, foreground, transparent } from "../theme.js"
+import { lightForeground } from "../theme.js"
+import Img from "gatsby-image"
 
 export const query = graphql`
   query($slug: String!) {
     contentfulBlogPost(slug: {eq: $slug}) {
         title
         publishedDate (formatString:"MMMM Do, YYYY")
+        postThumbnail {
+          fixed {
+            src
+          }
+          file {
+            url
+          }
+          title
+        }
         body {
           json
         }
@@ -21,26 +31,44 @@ export const query = graphql`
 `
 
 const BlogHero = styled(Hero)`
-    padding: 2rem 0 2rem 0;
-    margin-bottom: 3rem;
+    padding: 4rem 0 1rem 0;
     h1 {
         margin-top: 2rem;
+        margin-bottom: 0.5rem;
         font-size: 56px;
     }
 `
 
-const BlogLink = styled(Link)`
-    font-size: .8rem;
-    padding: 8px 12px;
-    border-radius: 24px;
-    text-decoration: none;
-    margin-left: -12px;
-    color: ${lightForeground};
-    transition: 0.3s all ease-in-out;
-    &:hover {
-      color: ${foreground};
-      background: ${transparent};
+// const BlogLink = styled(Link)`
+//     display: inline-block;
+//     text-align: center;
+//     font-size: .8rem;
+//     padding: 8px 12px;
+//     border-radius: 24px;
+//     text-decoration: none;
+//     margin-left: -12px;
+//     color: ${lightForeground};
+//     transition: 0.3s all ease-in-out;
+//     margin: 0 auto;
+//     &:hover {
+//       color: ${foreground};
+//       background: ${transparent};
+//     }
+// `
+
+const BlogContainer = styled(Container)`
+    max-width: 900px;
+    img {
+      margin-bottom: 4rem;
     }
+`
+
+const BlogContentContainer = styled(Container)`
+    max-width: 680px;
+`
+
+const BlogDate = styled.p`
+    color ${lightForeground};
 `
 
 const Blog = (props) => {
@@ -59,15 +87,18 @@ const Blog = (props) => {
         <Layout>
           <Head title={props.data.contentfulBlogPost.title} />
           <BlogHero>
-            <Container>
-              <BlogLink to="/blog">Back to Blog</BlogLink>
+            <BlogContentContainer>
+              {/* <BlogLink to="/blog">Back to Blog</BlogLink> */}
               <h1>{props.data.contentfulBlogPost.title}</h1>
-            </Container>
+              <BlogDate>{props.data.contentfulBlogPost.publishedDate}</BlogDate>
+            </BlogContentContainer>
           </BlogHero>
-          <Container>
-            <p>{props.data.contentfulBlogPost.publishedDate}</p>
+          <BlogContainer>
+            <img src={props.data.contentfulBlogPost.postThumbnail.file.url} alt={props.data.contentfulBlogPost.postThumbnail.title}></img>
+          </BlogContainer>
+          <BlogContentContainer>
             {documentToReactComponents(props.data.contentfulBlogPost.body.json, options)}
-          </Container>
+          </BlogContentContainer>
         </Layout>
     )
 }

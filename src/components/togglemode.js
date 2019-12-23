@@ -1,9 +1,8 @@
 import React from 'react';
 import { ThemeConsumer } from 'styled-components';
 import Icon from "../components/icon.js"
-import { transparent } from "../theme.js"
 import styled from 'styled-components'
-import { lightForeground, foreground } from "../theme.js"
+import { lightForeground, foreground, transparent} from "../theme.js"
 
 const ToggleIcon = styled(Icon)`
     fill: ${lightForeground};
@@ -12,12 +11,15 @@ const ToggleIcon = styled(Icon)`
 
 const ToggleButton = styled.button`
   background: none;
-  border: none;
   outline: none;
+  border: none;
   transition: all 0.3s;
   border-radius: 22px;
   margin-top: -2px;
-  padding: 12px;
+  padding: 8px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
   width: 44px;
   height: 44px;
   &:hover {

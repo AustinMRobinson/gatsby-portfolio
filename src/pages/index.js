@@ -35,7 +35,7 @@ const Role = styled.p`
 const CompanyIcon = styled(Icon)`
     margin-left: .5rem;
     fill: ${lightForeground};
-    transition: all 0.1s ease-in-out;
+    transition: all 0.3s ease-in-out;
     width: 24px;
     height: 24px;
     &:hover {
