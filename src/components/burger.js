@@ -30,7 +30,6 @@ export const StyledBurger = styled.button`
     width: 1.5rem;
     height: 3px;
     background: ${lightForeground};
-    border-radius: 10px;
     transition: all 0.3s linear;
     position: relative;
     transform-origin: 1px;
