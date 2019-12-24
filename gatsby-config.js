@@ -11,6 +11,27 @@ module.exports = {
       author: 'Austin Robinson',
     },
     plugins: [
+      {
+        resolve: `gatsby-plugin-favicon`,
+        options: {
+          logo: "./src/favicon.png",
+          background: '#0f0f0f',
+          theme_color: '#0f0f0f',
+          display: 'standalone',
+          orientation: 'any',
+          start_url: '/?homescreen=1',
+          icons: {
+            android: true,
+            appleIcon: true,
+            appleStartup: true,
+            coast: false,
+            favicons: true,
+            firefox: true,
+            yandex: false,
+            windows: false
+          }
+        }
+      },
       'gatsby-plugin-styled-components',
       'gatsby-plugin-react-helmet',
       {
