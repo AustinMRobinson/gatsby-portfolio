@@ -18,6 +18,10 @@ const Div = styled.div`
         padding: 3rem 0;
         border-bottom: 1px solid ${transparent};
     }
+    @media (max-width: 460px) {
+        h3 {
+            font-size: 1.5rem;
+    }
 `
 
 const Text = styled.p`

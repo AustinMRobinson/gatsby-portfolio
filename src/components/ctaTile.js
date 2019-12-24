@@ -18,11 +18,16 @@ const TileInfo = styled.div`
     background: ${layer1};
     h2 {
         margin: 0;
-        font-size: 40px;
+        font-size: 2.5rem;
     }
     p {
         color: ${lightForeground};
     }
+    @media (max-width: 460px) {
+        h2 {
+            font-size: 1.75rem;
+    }
+}
 `
 
 const Status = styled.p`

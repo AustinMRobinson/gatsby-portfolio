@@ -6,6 +6,9 @@ import useTheme from '../usetheme.js';
 import { foreground, layer0 } from "../theme.js"
 
 const GlobalStyle = createGlobalStyle`
+html {
+    background: ${layer0}; 
+}
 body {
   background: ${layer0};
   color: ${foreground};

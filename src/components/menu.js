@@ -5,6 +5,7 @@ import { bool } from 'prop-types';
 import { foreground, layer2, accent, evenLessTransparent } from '../theme.js'
 
 export const StyledMenu = styled.div`
+    display: none;
     background: ${layer2};
     box-shadow: 0 18px 36px -18px ${evenLessTransparent};
     height: 100vh;
@@ -18,8 +19,14 @@ export const StyledMenu = styled.div`
     transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(100%)'};
     @media (max-width: 768px) {
         padding: 4rem 4rem 3rem 1rem;
+        display: flex;
+
     }
     @media (max-width: 460px) {
+        display: flex;
+        align-items: center;
+        justify-items: center;
+        padding: 6rem 4rem 4rem 4rem;
         width: 100%;
     }
 `
@@ -27,10 +34,10 @@ export const StyledMenu = styled.div`
 const NavMenuList = styled.li`
     display: block;
     list-style-type: none;
+    width: 100%;
 `
 
 const NavItem = styled(Link)`
-    display: flex;
     width: 100%;
     font-size: 1.5rem;
     padding: 2rem 2.5rem;
@@ -40,6 +47,7 @@ const NavItem = styled(Link)`
     color: ${foreground};
     text-decoration: none;
     transition: color 0.3s linear;
+    display: block;
     @media (max-width: 460px) {
       font-size: 1.5rem;
       text-align: center;
@@ -48,9 +56,8 @@ const NavItem = styled(Link)`
       color: ${accent};
     }
     @media (max-width: 768px) {
-        font-size: 1.25rem;
         padding: 1rem 1.5rem;
-        margin: 0.5rem 0;
+        margin: 1rem 0;
     }
 `
 

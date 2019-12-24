@@ -33,7 +33,7 @@ const ToggleButton = styled.button`
     }
   }
   @media (max-width: 768px) {
-    margin-right: .5rem;
+    margin-right: .3rem;
     ${ToggleIcon} {
       width: 1.25rem;
       height: 1.25rem;
