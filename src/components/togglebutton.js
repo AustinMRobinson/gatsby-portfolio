@@ -1,6 +1,6 @@
 import React from 'react';
 import { ThemeConsumer } from 'styled-components';
-import Icon from "../components/icon.js"
+import Icon from "./icon.js"
 import styled from 'styled-components'
 import { lightForeground, foreground, transparent} from "../theme.js"
 
@@ -14,18 +14,29 @@ const ToggleButton = styled.button`
   outline: none;
   border: none;
   transition: all 0.3s;
-  border-radius: 22px;
+  border-radius: 1.375rem;
   margin-top: -2px;
-  padding: 8px;
+  padding: 0.5rem;
   display: flex;
   align-content: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
+  width: 2.75rem;
+  height: 2.75rem;
+  ${ToggleIcon} {
+    width: 1rem;
+    height: 1rem;
+  }
   &:hover {
     background: ${transparent};
     ${ToggleIcon} {
       fill: ${foreground};
+    }
+  }
+  @media (max-width: 768px) {
+    margin-right: .5rem;
+    ${ToggleIcon} {
+      width: 1.25rem;
+      height: 1.25rem;
     }
   }
 `
@@ -44,7 +55,7 @@ export default function ToggleMode() {
             )
           }
         >
-        {theme.mode === 'light' ? <ToggleIcon name="moon" width="16px" height="16px" /> : <ToggleIcon name="sun" width="16px" height="16px"/>}
+        {theme.mode === 'light' ? <ToggleIcon name="moon"/> : <ToggleIcon name="sun"/>}
         </ToggleButton>
       )}
     </ThemeConsumer>

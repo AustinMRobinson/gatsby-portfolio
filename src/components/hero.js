@@ -1,6 +1,4 @@
 import styled from 'styled-components'
-// import theme from '../components/layout.js'
-import { withTheme } from 'styled-components'
 import { foreground } from '../theme.js'
 
 
@@ -21,4 +19,4 @@ const Hero = styled.section`
     }
 `
 
-export default withTheme(Hero)
+export default Hero

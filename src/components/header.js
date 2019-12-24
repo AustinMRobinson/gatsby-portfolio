@@ -1,17 +1,18 @@
-import React from 'react'
+import React, { useState, useRef } from 'react';
+import { useOnClickOutside } from '../hooks.js';
 import { Link } from 'gatsby'
 import styled from 'styled-components'
 import "../styles/index.scss"
 import Container from './container';
 import { foreground, lightForeground, transparent, evenTransparent } from '../theme.js'
-import ToggleMode from '../components/togglemode.js';
+import ToggleMode from './togglebutton';
+import Burger from '../components/burger.js';
+import Menu from '../components/menu.js';
 
 const HeaderStyles = styled.header`
     padding: .5rem 0;
-    ${'' /* background: ${layer1}; */}
     top: 0;
     width: 100%;
-    ${'' /* box-shadow: 0 30px 60px -10px ${moreTransparent}, 0 18px 36px -18px ${moreTransparent}; */}
     nav {
         display: flex;
         justify-content: space-between;
@@ -20,11 +21,14 @@ const HeaderStyles = styled.header`
 `
 
 const NavLogo = styled(Link)`
-    height: 56px;
-    width: 56px;
-    padding: 14px;
-    border-radius: 28px;
+    position: relative;
+    z-index: 10;
+    height: 3.25rem;
+    width: 3.25rem;
+    padding: .9rem;
+    border-radius: 1.625rem;
     transition: all 0.3s ease-in-out;
+    margin-left: -.5rem;
     &:hover {
         background: ${transparent}
     }
@@ -43,8 +47,6 @@ const NavList = styled.ul`
     li {
         margin: 0;
     }
-    @media (max-width: 460px) {
-        display: none;
 }
 `
 
@@ -63,6 +65,16 @@ const NavItem = styled(Link)`
     &:active {
         color: ${foreground};
     }
+    @media (max-width: 768px) {
+        display: none;
+    }
+`
+
+const NavMenu = styled.div`
+`
+
+const AlignNav = styled.div`
+    display: flex;
 `
 
 const Header = (props) => {
@@ -81,6 +93,9 @@ const Header = (props) => {
     // `)
 
     // <img src={data.contentfulHomepage.siteLogo.file.url} alt={data.contentfulHomepage.siteLogo.title}></img>
+    const [open, setOpen] = useState(false);
+    const node = useRef(); 
+    useOnClickOutside(node, () => setOpen(false));
 
     return (
         <HeaderStyles>
@@ -92,12 +107,18 @@ const Header = (props) => {
                             <path class="st0" d="M42.8,0H0v42.5h42.8c11.7,0,21.2-9.5,21.2-21.2S54.5,0,42.8,0z"/>
                         </NavIcon>
                     </NavLogo>
-                    <NavList>
-                        <li><NavItem to="/blog">Blog</NavItem></li>
-                        <li><NavItem to="/about">About Me</NavItem></li>
-                        <li><NavItem to="/contact">Contact Me</NavItem></li>
-                        <li><ToggleMode /></li>
-                    </NavList>
+                    <AlignNav>
+                        <NavList>
+                            <li><NavItem to="/blog">Blog</NavItem></li>
+                            <li><NavItem to="/about">About Me</NavItem></li>
+                            <li><NavItem to="/contact">Contact Me</NavItem></li>
+                            <li><ToggleMode /></li>
+                        </NavList>
+                        <NavMenu ref={node}>
+                            <Burger open={open} setOpen={setOpen} />
+                            <Menu open={open} setOpen={setOpen} />
+                        </NavMenu>
+                    </AlignNav>
                 </nav>
             </Container>
         </HeaderStyles>
