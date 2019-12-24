@@ -26,7 +26,7 @@ export const StyledMenu = styled.div`
         display: flex;
         align-items: center;
         justify-items: center;
-        padding: 6rem 4rem 4rem 4rem;
+        padding: 3rem;
         width: 100%;
     }
 `

@@ -6,7 +6,8 @@ import Icon from "../components/icon.js"
 import { transparent } from "../theme.js"
 
 const Div = styled.div`
-    flex: 1 0 30%;
+    flex: 0 0 30%;
+    padding-right: 1rem;
     h3 {
         font-size: 1.75rem;
         margin-bottom: 1rem;

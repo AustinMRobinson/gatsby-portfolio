@@ -20,6 +20,7 @@ const IndexHero = styled(Hero)`
       margin: 0 auto;
     }
     @media (max-width: 768px) {
+        padding: 5rem 0 2rem 0;
         h1 {
             font-size: 4rem;
             max-width: none;
@@ -84,6 +85,9 @@ const PageCTAs = styled.section`
     @media (max-width: 768px) {
     flex-direction: column;
     padding: 6rem 0;
+    @media (max-width: 768px) {
+        padding: 2.5rem 0;
+    }
   }
 `
 

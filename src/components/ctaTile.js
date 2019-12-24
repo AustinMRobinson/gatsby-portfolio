@@ -25,7 +25,7 @@ const TileInfo = styled.div`
     }
     @media (max-width: 460px) {
         h2 {
-            font-size: 1.75rem;
+            font-size: 2rem;
     }
 }
 `
