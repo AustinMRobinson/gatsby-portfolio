@@ -63,6 +63,7 @@ const Intro = styled.p`
     @media (max-width: 768px) {
         font-size: 1rem;
         line-height: 1.25rem;
+        max-width: none;
     }
 `
 
