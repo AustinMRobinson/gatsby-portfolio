@@ -28,6 +28,7 @@ const FooterStyles = styled.footer`
         font-size: 14px;
     }
     @media (max-width: 768px) {
+        margin-top: 3.5rem;
         ul {
             flex: 1 0 100%;
             li {

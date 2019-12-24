@@ -6,7 +6,7 @@ import Container from "../components/container"
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import Head from "../components/head.js"
 import Hero from "../components/hero.js"
-import { lightForeground, foreground, transparent } from "../theme.js"
+import { lightForeground, foreground, lessTransparent, evenMoreTransparent } from "../theme.js"
 import Img from "gatsby-image"
 import Icon from "../components/icon.js"
 
@@ -15,6 +15,18 @@ export const data = graphql`
     contentfulBlogPost(slug: {eq: $slug}) {
         title
         publishedDate (formatString:"MMMM Do, YYYY")
+        author {
+          name
+          profilePicture {
+            fixed(width: 32, height: 32) {
+              height
+              width
+              src
+              srcSet
+            }
+            title
+          }
+        }
         postThumbnail {
           fixed(width:900 quality: 80) {
             width
@@ -32,18 +44,23 @@ export const data = graphql`
 `
 
 const BlogHero = styled(Hero)`
-    padding: 4rem 0 1rem 0;
+    padding: 4rem 0 3rem 0;
     h1 {
         margin-top: 2rem;
-        margin-bottom: 0.5rem;
-        font-size: 56px;
     }
+    @media (max-width: 768px) {
+    padding: 1rem 0 1.5rem 0;
+    h1 {
+      margin-bottom: 1rem;
+    }
+}
 `
 
 const ArrowIcon = styled(Icon)`
   fill: ${lightForeground};
   width: 8px;
   margin-right: 12px;
+  transition: 1.5s all;
 `
 
 const BlogLink = styled(Link)`
@@ -56,10 +73,9 @@ const BlogLink = styled(Link)`
   color: ${lightForeground};
   transition: 0.3s all ease-in-out;
   align-items: center;
-  font-weight: 500;
+  font-weight: 600;
   &:hover {
     color: ${foreground};
-    background: ${transparent};
     ${ArrowIcon} {
       fill: ${foreground};
     }
@@ -71,15 +87,72 @@ const BlogContainer = styled(Container)`
 `
 
 const BlogContentContainer = styled(Container)`
-    max-width: 680px;
+    max-width: 688px;
+`
+
+const PostInfo = styled.div`
+  display: flex;
+  align-items: center;
+`
+
+const BlogAuthor = styled.div`
+  display: inline-flex;
+  align-items: center;
+  color: ${lightForeground};
+  font-weight: 600;
+  margin-right: 16px;
+  transition: 0.3s all ease-in-out;
+`
+
+const AuthorImg = styled(Img)`
+  width: 32px;
+  height: 32px;
+  border-radius: 16px;
+  margin-right: 12px;
+  transition: 0.3s all ease-in-out;
+  box-shadow: 0 0px 24px ${lessTransparent};
 `
 
 const BlogDate = styled.p`
-    color ${lightForeground};
+  color: ${lightForeground};
+  margin: 0;
+`
+
+const BlogImage = styled.div`
+    height: 560px;
+    overflow: hidden;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto 4rem auto;
+    box-shadow: 0 24px 44px -18px ${evenMoreTransparent};
+    @media (max-width: 768px) {
+      height: 424px;
+    }
+    @media (max-width: 460px) {
+      height: 280px;
+      margin-bottom: 2rem;
+    }
+
 `
 
 const BlogImg = styled(Img)`
-    margin: 0 auto 4rem auto;
+`
+
+const AuthorLink = styled(Link)`
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  &:hover {
+    ${BlogAuthor} {
+      color: ${foreground}
+    }
+    ${AuthorImg} {
+      transform: scale(1.1);
+      box-shadow: 0 4px 24px ${lessTransparent};
+    }
+  }
 `
 
 const Blog = (props) => {
@@ -88,7 +161,7 @@ const Blog = (props) => {
     const options = {
       renderNode: {
         "embedded-asset-block": (node) => {
-          const alt = node.data.target.fields.title['en-US']
+          const alt = node.data.target.fields.title['en-US'].title
           const url = node.data.target.fields.file['en-US'].url
           return <img alt={alt} src={url}></img>
         }
@@ -101,11 +174,16 @@ const Blog = (props) => {
             <BlogContentContainer>
               <BlogLink to="/blog"><ArrowIcon name="arrow left" title="Arrow Left"></ArrowIcon>Back to Blog</BlogLink>
               <h1>{props.data.contentfulBlogPost.title}</h1>
-              <BlogDate>{props.data.contentfulBlogPost.publishedDate}</BlogDate>
+              <PostInfo>
+                <AuthorLink><BlogAuthor><AuthorImg fixed={props.data.contentfulBlogPost.author.profilePicture.fixed} alt={props.data.contentfulBlogPost.author.profilePicture.title} draggable="false"></AuthorImg>{props.data.contentfulBlogPost.author.name}</BlogAuthor></AuthorLink>
+                <BlogDate>{props.data.contentfulBlogPost.publishedDate}</BlogDate>
+              </PostInfo>
             </BlogContentContainer>
           </BlogHero>
           <BlogContainer>
-            <BlogImg fixed={props.data.contentfulBlogPost.postThumbnail.fixed} alt={props.data.contentfulBlogPost.postThumbnail.title} draggable="false"></BlogImg>
+            <BlogImage>
+              <BlogImg fixed={props.data.contentfulBlogPost.postThumbnail.fixed} alt={props.data.contentfulBlogPost.postThumbnail.title} draggable="false"></BlogImg>
+            </BlogImage>
           </BlogContainer>
           <BlogContentContainer>
             {documentToReactComponents(props.data.contentfulBlogPost.body.json, options)}

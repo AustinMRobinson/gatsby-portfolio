@@ -43,6 +43,9 @@ const NavList = styled.ul`
     li {
         margin: 0;
     }
+    @media (max-width: 460px) {
+        display: none;
+}
 `
 
 const NavItem = styled(Link)`

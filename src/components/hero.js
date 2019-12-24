@@ -11,6 +11,14 @@ const Hero = styled.section`
     h1 {
         font-size: 3.5rem;
     }
+    @media (max-width: 768px) {
+        padding-top: 3rem;
+        margin-bottom: 1rem;
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0;
+        }
+    }
 `
 
 export default withTheme(Hero)

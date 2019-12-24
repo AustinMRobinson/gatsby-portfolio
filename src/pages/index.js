@@ -25,7 +25,7 @@ const IndexHero = styled(Hero)`
             max-width: none;
         }
     }
-    @media (max-width: 425px) {
+    @media (max-width: 460px) {
         h1 {
             font-size: 3rem;
         }
