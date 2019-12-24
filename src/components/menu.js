@@ -2,30 +2,34 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 import { bool } from 'prop-types';
-import { foreground, layer2, accent, evenLessTransparent } from '../theme.js'
+import { foreground, accent, evenLessTransparent, evenMoreTransparent } from '../theme.js'
 
 export const StyledMenu = styled.div`
     display: none;
-    background: ${layer2};
+    background: ${evenMoreTransparent};
+    backdrop-filter: saturate(180%) blur(20px);
     box-shadow: 0 18px 36px -18px ${evenLessTransparent};
-    height: 100vh;
+    width: 100%;
     text-align: left;
     padding: 4rem 6rem 3rem 3rem;
     position: absolute;
     z-index: 8;
     top: 0;
+    left: 0;
     right: 0;
     transition: transform 0.3s ease-in-out;
-    transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(100%)'};
+    transform: ${({ open }) => open ? 'translateY(0)' : 'translateY(100%)'};
     @media (max-width: 768px) {
-        padding: 4rem 4rem 3rem 1rem;
+        padding: 5rem 1rem 1.5rem 0.5rem;
         display: ${({ open }) => open ? 'flex' : 'none'};
     }
     @media (max-width: 460px) {
+        position: fixed;
         align-items: center;
         justify-items: center;
         padding: 3rem;
         width: 100%;
+        height: 100%;
         display: ${({ open }) => open ? 'flex' : 'none'};
     }
 `
@@ -47,16 +51,16 @@ const NavItem = styled(Link)`
     text-decoration: none;
     transition: color 0.3s linear;
     display: block;
-    @media (max-width: 460px) {
-      font-size: 1.5rem;
-      text-align: center;
-    }
     &:hover {
       color: ${accent};
     }
     @media (max-width: 768px) {
-        padding: 1rem 1.5rem;
+        padding: 1rem;
         margin: 1rem 0;
+    }
+    @media (max-width: 460px) {
+      font-size: 1.5rem;
+      text-align: center;
     }
 `
 
