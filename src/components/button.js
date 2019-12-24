@@ -12,6 +12,7 @@ const color = theme.variants("mode", "variant", {
     tertiary: { light: "#000000", dark: "#ffffff"},
     success: { light: "#ffffff", dark: "#000000" },
     warning: { light: "#ffffff", dark: "#000000" },
+    disabled: { light: '#adadad', dark: "#737373" }
 });
 
 const backgroundColor = theme.variants("mode", "variant", {
