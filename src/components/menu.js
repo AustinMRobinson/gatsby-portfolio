@@ -19,15 +19,14 @@ export const StyledMenu = styled.div`
     transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(100%)'};
     @media (max-width: 768px) {
         padding: 4rem 4rem 3rem 1rem;
-        display: flex;
-
+        display: ${({ open }) => open ? 'flex' : 'none'};
     }
     @media (max-width: 460px) {
-        display: flex;
         align-items: center;
         justify-items: center;
         padding: 3rem;
         width: 100%;
+        display: ${({ open }) => open ? 'flex' : 'none'};
     }
 `
 
