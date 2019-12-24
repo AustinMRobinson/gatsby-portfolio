@@ -26,7 +26,7 @@ const IndexHero = styled(Hero)`
         }
     }
     @media (max-width: 420px) {
-        font-size: 3.5rem;
+        font-size: 3.25rem;
     }
 `
 
@@ -65,7 +65,7 @@ const Intro = styled.p`
 `
 
 const CTATiles = styled.section`
-    padding: 1rem;
+    padding: 1rem 0;
 `
 
 const TileWrapper = styled.div`
