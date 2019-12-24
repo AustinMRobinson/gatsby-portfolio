@@ -59,6 +59,9 @@ const FooterContainer = styled(Container)`
         padding: 6rem 2rem 3rem 2rem;
         flex-wrap: wrap;
     }
+    @media (max-width: 420px) {
+        padding: 4rem 1rem 2rem 1rem;
+    }
 }
 `
 

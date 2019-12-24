@@ -25,6 +25,9 @@ const IndexHero = styled(Hero)`
             max-width: none;
         }
     }
+    @media (max-width: 420px) {
+        font-size: 3.5rem;
+    }
 `
 
 const Role = styled.p`
