@@ -115,16 +115,20 @@ const AuthorImg = styled(Img)`
 
 const BlogDate = styled.p`
   color: ${lightForeground};
-  margin: 0;
+  margin: 2px 0 0 0;
+  font-size: 0.9rem;
+  @media (max-width: 460px) {
+    margin: 0;
+  }
 `
 
 const BlogImage = styled.div`
-    height: 560px;
+    max-height: 520px;
     overflow: hidden;
     display: flex;
-    align-content: center;
-    justify-content: center;
-    width: 100%;
+    align-items: center;
+    justify-items: center;
+    height: 100%;
     margin: 0 auto 4rem auto;
     box-shadow: 0 24px 44px -18px ${evenMoreTransparent};
     @media (max-width: 768px) {

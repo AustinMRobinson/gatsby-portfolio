@@ -39,9 +39,12 @@ const Role = styled.p`
     font-weight: bold;
     font-size: 1rem;
     letter-spacing: 1px;
-    margin: 2rem 0 3rem;
+    margin: 2rem 0 3rem 0;
     display: inline-flex;
-
+    @media (max-width: 768px) {
+        margin: 1.5rem 0 2rem 0;
+        font-size: .9rem;
+    }
 `
 
 const CompanyIcon = styled(Icon)`
@@ -63,7 +66,7 @@ const Intro = styled.p`
     margin: 0 auto;
     @media (max-width: 768px) {
         font-size: 1rem;
-        line-height: 1.25rem;
+        line-height: 1.4rem;
         max-width: none;
     }
 `

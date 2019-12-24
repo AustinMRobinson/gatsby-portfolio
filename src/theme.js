@@ -26,8 +26,8 @@ export const kindaLightForeground = theme('mode', {
 })
 
 export const lightForeground = theme('mode', {
-  light: '#737373',
-  dark: '#adadad'
+  light: '#6a6a6a',
+  dark: '#919191'
 })
 
 export const evenMoreTransparent = theme('mode', {

@@ -23,14 +23,19 @@ const HeaderStyles = styled.header`
 const NavLogo = styled(Link)`
     position: relative;
     z-index: 10;
-    height: 3.25rem;
-    width: 3.25rem;
-    padding: .9rem;
-    border-radius: 1.625rem;
+    height: 3.5rem;
+    width: 3.5rem;
+    padding: 1rem;
+    border-radius: 1.75rem;
     transition: all 0.3s ease-in-out;
-    margin-left: -.5rem;
+    margin-left: -1rem;
     &:hover {
         background: ${transparent}
+    }
+    @media (max-width: 768px) {
+        height: 3.75rem;
+        width: 3.75rem;
+        border-radius: 1.825rem;
     }
 `
 

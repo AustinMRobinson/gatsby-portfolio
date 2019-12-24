@@ -13,7 +13,7 @@ const Tile = styled.div`
 `
 
 const TileInfo = styled.div`
-    padding: 3rem 3rem 1.5rem 3rem;
+    padding: 3rem 3.5rem 1.5rem 3.5rem;
     text-align: center;
     background: ${layer1};
     h2 {
@@ -22,6 +22,9 @@ const TileInfo = styled.div`
     }
     p {
         color: ${lightForeground};
+    }
+    @media (max-width: 768px) {
+        padding: 2.5rem 2rem 1.5rem 2rem;
     }
     @media (max-width: 460px) {
         h2 {
@@ -49,7 +52,7 @@ const CTATile = ({
             <Status>{status}</Status>
             <p>{text}</p>
         </TileInfo>
-        <Button size="large" expanded="true" mt="1em">Ch-ch-check it out</Button>
+        <Button size="large" expanded="true" mt="1em">Check it out</Button>
     </Tile>
     
 )
