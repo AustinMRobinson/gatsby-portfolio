@@ -6,7 +6,6 @@ import StyledLink from '../components/styledlink'
 import { foreground, kindaLightForeground, lightForeground, evenMoreTransparent} from "../theme.js"
 
 const FooterStyles = styled.footer`
-    ${'' /* background: ${layer0}; */}
     color: ${lightForeground};
     margin-top: 6rem;
     ${StyledLink} {
@@ -28,13 +27,39 @@ const FooterStyles = styled.footer`
     p {
         font-size: 14px;
     }
+    @media (max-width: 768px) {
+        ul {
+            flex: 1 0 100%;
+            li {
+            display: block;
+            text-align: center;
+            }
+        }
+        p {
+            display: block;
+            width: 100%;
+            text-align: center;
+            margin-top: 4rem;
+        }
+        ${StyledLink} {
+            padding: 1rem;
+            margin: .5rem;
+            font-size: .8rem;
+            display: block;
+        }
+    }
 `
 
 const FooterContainer = styled(Container)`
     border-top: 1px solid ${evenMoreTransparent};
-    padding: 4rem 0 2rem 0;
+    padding: 4rem 1rem 2rem 1rem;
     display: flex;
     justify-content: space-between;
+    @media (max-width: 768px) {
+        padding: 6rem 2rem 3rem 2rem;
+        flex-wrap: wrap;
+    }
+}
 `
 
 const Footer = () => {

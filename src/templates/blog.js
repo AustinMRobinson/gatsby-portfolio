@@ -1,13 +1,14 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import { Link, graphql } from 'gatsby'
 import styled from 'styled-components'
 import Layout from '../components/layout'
 import Container from "../components/container"
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import Head from "../components/head.js"
 import Hero from "../components/hero.js"
-import { lightForeground } from "../theme.js"
+import { lightForeground, foreground, transparent } from "../theme.js"
 import Img from "gatsby-image"
+import Icon from "../components/icon.js"
 
 export const data = graphql`
   query($slug: String!) {
@@ -39,22 +40,30 @@ const BlogHero = styled(Hero)`
     }
 `
 
-// const BlogLink = styled(Link)`
-//     display: inline-block;
-//     text-align: center;
-//     font-size: .8rem;
-//     padding: 8px 12px;
-//     border-radius: 24px;
-//     text-decoration: none;
-//     margin-left: -12px;
-//     color: ${lightForeground};
-//     transition: 0.3s all ease-in-out;
-//     margin: 0 auto;
-//     &:hover {
-//       color: ${foreground};
-//       background: ${transparent};
-//     }
-// `
+const ArrowIcon = styled(Icon)`
+  fill: ${lightForeground};
+  width: 8px;
+  margin-right: 12px;
+`
+
+const BlogLink = styled(Link)`
+  display: inline-flex;
+  font-size: .8rem;
+  padding: 8px 20px;
+  border-radius: 24px;
+  text-decoration: none;
+  margin-left: -18px;
+  color: ${lightForeground};
+  transition: 0.3s all ease-in-out;
+  align-items: center;
+  &:hover {
+    color: ${foreground};
+    background: ${transparent};
+    ${ArrowIcon} {
+      fill: ${foreground};
+    }
+  }
+`
 
 const BlogContainer = styled(Container)`
     max-width: 900px;
@@ -89,7 +98,7 @@ const Blog = (props) => {
           <Head title={props.data.contentfulBlogPost.title} />
           <BlogHero>
             <BlogContentContainer>
-              {/* <BlogLink to="/blog">Back to Blog</BlogLink> */}
+              <BlogLink to="/blog"><ArrowIcon name="arrow left" title="Arrow Left"></ArrowIcon>Back to Blog</BlogLink>
               <h1>{props.data.contentfulBlogPost.title}</h1>
               <BlogDate>{props.data.contentfulBlogPost.publishedDate}</BlogDate>
             </BlogContentContainer>

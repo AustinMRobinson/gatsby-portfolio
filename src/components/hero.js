@@ -9,7 +9,7 @@ const Hero = styled.section`
     color: ${foreground};
     margin-bottom: 1rem;
     h1 {
-        font-size: 56px;
+        font-size: 3.5rem;
     }
 `
 

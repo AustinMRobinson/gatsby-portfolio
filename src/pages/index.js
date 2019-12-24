@@ -14,10 +14,16 @@ const IndexHero = styled(Hero)`
     padding: 8rem 0 4rem 0;
     text-align: center;
     h1 {
-      font-size: 96px;
+      font-size: 6rem;
       font-weight: 400;
       max-width: 90%;
       margin: 0 auto;
+    }
+    @media (max-width: 768px) {
+        h1 {
+            font-size: 4rem;
+            max-width: none;
+        }
     }
 `
 
@@ -49,6 +55,10 @@ const Intro = styled.p`
     line-height: 1.75rem;
     max-width: 80%;
     margin: 0 auto;
+    @media (max-width: 768px) {
+        font-size: 1rem;
+        line-height: 1.25rem;
+    }
 `
 
 const CTATiles = styled.section`
@@ -58,10 +68,17 @@ const CTATiles = styled.section`
 const TileWrapper = styled.div`
     display: flex;
     justify-content: space-between;
+    @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `
 
 const PageCTAs = styled.section`
     padding: 8rem 0 10rem 0;
+    @media (max-width: 768px) {
+    flex-direction: column;
+    padding: 6rem 0;
+  }
 `
 
 const IndexPage = () => {

@@ -3,12 +3,20 @@ import styled from 'styled-components'
 import StyledLink from './styledlink.js'
 import { lightForeground, foreground } from "../theme.js"
 import Icon from "../components/icon.js"
+import { transparent } from "../theme.js"
 
 const Div = styled.div`
-    width: 30%;
+    flex: 1 0 30%;
     h3 {
         font-size: 1.75rem;
         margin-bottom: 1rem;
+    }
+    @media (max-width: 768px) {
+        text-align: center;
+        margin: 1rem auto 1rem auto;
+        max-width: 80%;
+        padding: 3rem 0;
+        border-bottom: 1px solid ${transparent};
     }
 `
 

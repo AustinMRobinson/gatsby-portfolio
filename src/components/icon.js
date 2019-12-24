@@ -33,6 +33,8 @@ const getViewBox = name => {
       return "0 0 24 24";
     case "moon2":
       return "0 0 24 24";
+    case "arrow left":
+      return "0 0 12 16"
     default:
       return "0 0 32 32";
   }
@@ -170,6 +172,13 @@ const getPath = (name, props) => {
     //   return (
     //     <path {...props} d="M0,0v64h64L32,32L0,0z" d="M42.8,0H0v42.5h42.8c11.7,0,21.2-9.5,21.2-21.2S54.5,0,42.8,0z"/>
     // );
+    case "arrow left":
+    return (
+      <path
+      {...props}
+      d="M0.6,8l11.2,8V0L0.6,8z"
+      />
+    );
     default:
       return <path />;
   }

@@ -6,7 +6,10 @@ import { layer1, lightForeground } from '../theme.js'
 
 const Tile = styled.div`
     display: inline-block;
-    width: 48%;
+    flex: 0 0 48%;
+    @media (max-width: 768px) {
+    margin-bottom: 3rem;
+  }
 `
 
 const TileInfo = styled.div`
