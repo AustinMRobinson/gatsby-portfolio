@@ -27,7 +27,7 @@ const IndexHero = styled(Hero)`
     }
     @media (max-width: 425px) {
         h1 {
-            font-size: 3.5rem;
+            font-size: 3rem;
         }
     }
 `

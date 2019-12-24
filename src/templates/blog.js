@@ -56,6 +56,7 @@ const BlogLink = styled(Link)`
   color: ${lightForeground};
   transition: 0.3s all ease-in-out;
   align-items: center;
+  font-weight: 500;
   &:hover {
     color: ${foreground};
     background: ${transparent};
