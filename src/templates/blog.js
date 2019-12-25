@@ -6,7 +6,7 @@ import Container from "../components/container"
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import Head from "../components/head.js"
 import Hero from "../components/hero.js"
-import { lightForeground, foreground, lessTransparent, evenMoreTransparent } from "../theme.js"
+import { lightForeground, kindaLightForeground, foreground, lessTransparent, transparent, evenMoreTransparent, layer0 } from "../theme.js"
 import Img from "gatsby-image"
 import Icon from "../components/icon.js"
 
@@ -39,6 +39,7 @@ export const data = graphql`
         body {
           json
         }
+        tags
     }
   }
 `
@@ -93,15 +94,16 @@ const BlogContentContainer = styled(Container)`
 const PostInfo = styled.div`
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 `
 
 const BlogAuthor = styled.div`
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  color: ${lightForeground};
+  color: ${kindaLightForeground};
   font-weight: 600;
-  margin-right: 16px;
   transition: 0.3s all ease-in-out;
+  width: 100%;  
 `
 
 const AuthorImg = styled(Img)`
@@ -113,12 +115,39 @@ const AuthorImg = styled(Img)`
   box-shadow: 0 0px 24px ${lessTransparent};
 `
 
+const Divider = styled.p`
+  margin: 2px 8px 0 8px;
+  color: ${lightForeground};
+  font-size: 0.8rem;
+`
+
 const BlogDate = styled.p`
   color: ${lightForeground};
-  margin: 2px 0 0 0;
+  margin: 2px 16px 0 0;
   font-size: 0.9rem;
   @media (max-width: 460px) {
     margin: 0;
+  }
+`
+
+const BlogCategories = styled.div`
+  @media (max-width: 460px) {
+    margin-top: 12px;
+  }
+`
+
+const BlogCategory = styled(Link)`
+  color: ${lightForeground};
+  background: ${transparent};
+  padding: 4px 8px;
+  font-size: 0.8rem;
+  text-decoration: none;
+  border-radius: 4px;
+  margin-right: 8px;
+  transition: 0.3s all ease-in-out;
+  &:hover {
+    color: ${layer0};
+    background: ${kindaLightForeground};
   }
 `
 
@@ -159,7 +188,7 @@ const AuthorLink = styled(Link)`
   }
 `
 
-const Blog = (props) => {
+const Blog = ({ data }) => {
   // used to grab and render images from the body JSON. Passed in after
   // need to look at the JSON in GraphiQL to know how deep to dive 
     const options = {
@@ -171,26 +200,37 @@ const Blog = (props) => {
         }
       }
     }
+
+    const { title, postThumbnail, tags } = data.contentfulBlogPost;
+
     return (
         <Layout>
-          <Head title={props.data.contentfulBlogPost.title} />
+          <Head title={title} />
           <BlogHero>
             <BlogContentContainer>
               <BlogLink to="/blog"><ArrowIcon name="arrow left" title="Arrow Left"></ArrowIcon>Back to Blog</BlogLink>
-              <h1>{props.data.contentfulBlogPost.title}</h1>
+              <h1>{title}</h1>
               <PostInfo>
-                <AuthorLink><BlogAuthor><AuthorImg fixed={props.data.contentfulBlogPost.author.profilePicture.fixed} alt={props.data.contentfulBlogPost.author.profilePicture.title} draggable="false"></AuthorImg>{props.data.contentfulBlogPost.author.name}</BlogAuthor></AuthorLink>
-                <BlogDate>{props.data.contentfulBlogPost.publishedDate}</BlogDate>
+                <AuthorLink><BlogAuthor><AuthorImg fixed={data.contentfulBlogPost.author.profilePicture.fixed} alt={data.contentfulBlogPost.author.profilePicture.title} draggable="false"></AuthorImg>{data.contentfulBlogPost.author.name}</BlogAuthor></AuthorLink>
+                <Divider>•</Divider>
+                <BlogDate>{data.contentfulBlogPost.publishedDate}</BlogDate>
+                <BlogCategories>
+                  {tags.map(tag => (
+                    <BlogCategory key={tag}>
+                      {tag}
+                    </BlogCategory>
+                  ))}
+                </BlogCategories>
               </PostInfo>
             </BlogContentContainer>
           </BlogHero>
           <BlogContainer>
             <BlogImage>
-              <BlogImg fixed={props.data.contentfulBlogPost.postThumbnail.fixed} alt={props.data.contentfulBlogPost.postThumbnail.title} draggable="false"></BlogImg>
+              <BlogImg fixed={postThumbnail.fixed} alt={data.contentfulBlogPost.postThumbnail.title} draggable="false"></BlogImg>
             </BlogImage>
           </BlogContainer>
           <BlogContentContainer>
-            {documentToReactComponents(props.data.contentfulBlogPost.body.json, options)}
+            {documentToReactComponents(data.contentfulBlogPost.body.json, options)}
           </BlogContentContainer>
         </Layout>
     )

@@ -37,7 +37,7 @@ export const StyledMenu = styled.div`
 const NavMenuList = styled.li`
     display: block;
     list-style-type: none;
-    width: 100%;
+    width: 100%; 
 `
 
 const NavItem = styled(Link)`

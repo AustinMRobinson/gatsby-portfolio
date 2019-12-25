@@ -28,7 +28,7 @@ export const StyledBurger = styled.button`
     }
     div {
     width: 1.5rem;
-    height: 3px;
+    height: 2px;
     background: ${lightForeground};
     transition: all 0.3s linear;
     position: relative;
