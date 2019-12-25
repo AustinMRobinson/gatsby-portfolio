@@ -6,7 +6,7 @@ import Container from "../components/container"
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import Head from "../components/head.js"
 import Hero from "../components/hero.js"
-import { lightForeground, kindaLightForeground, foreground, lessTransparent, transparent, evenMoreTransparent, layer0 } from "../theme.js"
+import { lightForeground, kindaLightForeground, foreground, lessTransparent, transparent, moreTransparent, evenMoreTransparent, layer0 } from "../theme.js"
 import Img from "gatsby-image"
 import Icon from "../components/icon.js"
 
@@ -97,13 +97,14 @@ const PostInfo = styled.div`
   flex-wrap: wrap;
 `
 
+
+
 const BlogAuthor = styled.div`
   display: flex;
   align-items: center;
   color: ${kindaLightForeground};
   font-weight: 600;
   transition: 0.3s all ease-in-out;
-  width: 100%;  
 `
 
 const AuthorImg = styled(Img)`
@@ -115,10 +116,35 @@ const AuthorImg = styled(Img)`
   box-shadow: 0 0px 24px ${lessTransparent};
 `
 
+const AuthorLink = styled(Link)`
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  &:hover {
+    ${BlogAuthor} {
+      color: ${foreground}
+    }
+    ${AuthorImg} {
+      transform: scale(1.1);
+      box-shadow: 0 4px 24px ${lessTransparent};
+    }
+  }
+  @media (max-width: 460px) {
+  padding: 12px 0;
+  margin: 4px 0 12px 0;
+  width: 100%;
+  border-top: 1px solid ${moreTransparent};
+  border-bottom: 1px solid ${moreTransparent};
+}
+`
+
 const Divider = styled.p`
   margin: 2px 8px 0 8px;
   color: ${lightForeground};
   font-size: 0.8rem;
+  @media (max-width: 460px) {
+    display: none;
+  }
 `
 
 const BlogDate = styled.p`
@@ -126,14 +152,11 @@ const BlogDate = styled.p`
   margin: 2px 16px 0 0;
   font-size: 0.9rem;
   @media (max-width: 460px) {
-    margin: 0;
+    margin-right: 16px;
   }
 `
 
 const BlogCategories = styled.div`
-  @media (max-width: 460px) {
-    margin-top: 12px;
-  }
 `
 
 const BlogCategory = styled(Link)`
@@ -171,21 +194,6 @@ const BlogImage = styled.div`
 `
 
 const BlogImg = styled(Img)`
-`
-
-const AuthorLink = styled(Link)`
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  &:hover {
-    ${BlogAuthor} {
-      color: ${foreground}
-    }
-    ${AuthorImg} {
-      transform: scale(1.1);
-      box-shadow: 0 4px 24px ${lessTransparent};
-    }
-  }
 `
 
 const Blog = ({ data }) => {
