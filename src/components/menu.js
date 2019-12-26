@@ -42,6 +42,8 @@ const NavMenuList = styled.li`
 
 const NavItem = styled(Link)`
     width: 100%;
+    font-family: "Archivo";
+    font-weight: 700;
     font-size: 1.5rem;
     padding: 2rem 2.5rem;
     margin: 1rem 0;

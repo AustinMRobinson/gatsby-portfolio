@@ -6,7 +6,8 @@ const StyledLink = styled(Link)`
     color: ${foreground};
     text-decoration: none;
     text-transform: uppercase;
-    font-weight: 600;
+    font-family: "Archivo";
+    font-weight: 700;
     font-size: 14px;
     letter-spacing: 1px;
     transition: all 0.3s;

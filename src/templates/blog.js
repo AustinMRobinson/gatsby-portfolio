@@ -6,9 +6,10 @@ import Container from "../components/container"
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import Head from "../components/head.js"
 import Hero from "../components/hero.js"
-import { lightForeground, kindaLightForeground, foreground, lessTransparent, transparent, moreTransparent, evenMoreTransparent, layer0 } from "../theme.js"
+import { kindaLightForeground, lightForeground, foreground, evenMoreTransparent, layer1 } from "../theme.js"
 import Img from "gatsby-image"
 import Icon from "../components/icon.js"
+import Author from "../components/author.js"
 
 export const data = graphql`
   query($slug: String!) {
@@ -40,6 +41,31 @@ export const data = graphql`
           json
         }
         tags
+        morePosts {
+          title
+          slug
+          author {
+            name
+            profilePicture {
+              fixed(width: 32, height: 32) {
+                src
+                height
+                width
+                srcSet
+              }
+            }
+          }
+          publishedDate (formatString:"MMMM Do, YYYY")
+          postThumbnail {
+            fixed( width:600 quality: 80) {
+              src
+              srcSet
+              width
+              height
+            }
+            title
+          }
+        }
     }
   }
 `
@@ -97,47 +123,6 @@ const PostInfo = styled.div`
   flex-wrap: wrap;
 `
 
-
-
-const BlogAuthor = styled.div`
-  display: flex;
-  align-items: center;
-  color: ${kindaLightForeground};
-  font-weight: 600;
-  transition: 0.3s all ease-in-out;
-`
-
-const AuthorImg = styled(Img)`
-  width: 32px;
-  height: 32px;
-  border-radius: 16px;
-  margin-right: 12px;
-  transition: 0.3s all ease-in-out;
-  box-shadow: 0 0px 24px ${lessTransparent};
-`
-
-const AuthorLink = styled(Link)`
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  &:hover {
-    ${BlogAuthor} {
-      color: ${foreground}
-    }
-    ${AuthorImg} {
-      transform: scale(1.1);
-      box-shadow: 0 4px 24px ${lessTransparent};
-    }
-  }
-  @media (max-width: 460px) {
-  padding: 12px 0;
-  margin: 4px 0 12px 0;
-  width: 100%;
-  border-top: 1px solid ${moreTransparent};
-  border-bottom: 1px solid ${moreTransparent};
-}
-`
-
 const Divider = styled.p`
   margin: 2px 8px 0 8px;
   color: ${lightForeground};
@@ -157,20 +142,21 @@ const BlogDate = styled.p`
 `
 
 const BlogCategories = styled.div`
+  margin-top: -1px;
 `
 
 const BlogCategory = styled(Link)`
   color: ${lightForeground};
-  background: ${transparent};
-  padding: 4px 8px;
-  font-size: 0.8rem;
+  background: ${evenMoreTransparent};
   text-decoration: none;
-  border-radius: 4px;
-  margin-right: 8px;
+  padding: 4px 12px;
+  font-size: 0.8rem;
+  margin-right: 4px;
+  border-radius: 12px;
   transition: 0.3s all ease-in-out;
   &:hover {
-    color: ${layer0};
-    background: ${kindaLightForeground};
+    color: ${foreground};
+    background: ${layer1};
   }
 `
 
@@ -190,11 +176,76 @@ const BlogImage = styled.div`
       height: 280px;
       margin-bottom: 2rem;
     }
-
 `
 
 const BlogImg = styled(Img)`
 `
+
+const MorePosts = styled.div`
+    margin-top: 5rem;
+    h2 {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    @media (max-width: 768px) {
+      margin-top: 5rem;
+      h2 {
+        margin-bottom: 1rem;
+      }
+    } 
+`
+
+const PostWrapper = styled.div`
+    display: flex;
+    justify-content: space-between;
+    @media (max-width: 768px) {
+      flex-wrap: wrap;
+  }
+`
+
+const Post = styled(Link)`
+    width: 48%;
+    padding: 2rem;
+    border: 1px solid ${evenMoreTransparent};
+    text-decoration: none;
+    transition: 0.3s all ease-in-out;
+    h3 {
+      color: ${kindaLightForeground};
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    &:hover {
+      background: ${layer1};
+    }
+    @media (max-width: 768px) {
+      flex: 1 0 100%;
+      margin: 1.5rem 0;
+      padding: 1.3rem;
+  }
+`
+
+const MorePostsImage = styled.div`
+    height: 280px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    transition: 0.3s all;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    img {
+      margin: 0rem;
+    }
+    @media (max-width: 768px) {
+        width: 100%;
+    }
+    @media (max-width: 460px) {
+        height: 220px;
+    }
+`
+
+
 
 const Blog = ({ data }) => {
   // used to grab and render images from the body JSON. Passed in after
@@ -209,21 +260,20 @@ const Blog = ({ data }) => {
       }
     }
 
-    const { title, postThumbnail, tags } = data.contentfulBlogPost;
 
     return (
         <Layout>
-          <Head title={title} />
+          <Head title={data.contentfulBlogPost.title} />
           <BlogHero>
             <BlogContentContainer>
               <BlogLink to="/blog"><ArrowIcon name="arrow left" title="Arrow Left"></ArrowIcon>Back to Blog</BlogLink>
-              <h1>{title}</h1>
+              <h1>{data.contentfulBlogPost.title}</h1>
               <PostInfo>
-                <AuthorLink><BlogAuthor><AuthorImg fixed={data.contentfulBlogPost.author.profilePicture.fixed} alt={data.contentfulBlogPost.author.profilePicture.title} draggable="false"></AuthorImg>{data.contentfulBlogPost.author.name}</BlogAuthor></AuthorLink>
+                <Author fixed={data.contentfulBlogPost.author.profilePicture.fixed} name={data.contentfulBlogPost.author.name}/>
                 <Divider>•</Divider>
                 <BlogDate>{data.contentfulBlogPost.publishedDate}</BlogDate>
                 <BlogCategories>
-                  {tags.map(tag => (
+                  {data.contentfulBlogPost.tags.map(tag => (
                     <BlogCategory key={tag}>
                       {tag}
                     </BlogCategory>
@@ -234,12 +284,34 @@ const Blog = ({ data }) => {
           </BlogHero>
           <BlogContainer>
             <BlogImage>
-              <BlogImg fixed={postThumbnail.fixed} alt={data.contentfulBlogPost.postThumbnail.title} draggable="false"></BlogImg>
+              <BlogImg fixed={data.contentfulBlogPost.postThumbnail.fixed} alt={data.contentfulBlogPost.postThumbnail.title} draggable="false"></BlogImg>
             </BlogImage>
           </BlogContainer>
           <BlogContentContainer>
             {documentToReactComponents(data.contentfulBlogPost.body.json, options)}
           </BlogContentContainer>
+          <section>
+            <Container>
+              <MorePosts>
+              <h2>Keep Reading</h2>              
+              <PostWrapper>
+                {data.contentfulBlogPost.morePosts.map(morePost => (
+                    <Post to={`/blog/${morePost.slug}`} key={morePost}>
+                      <MorePostsImage>
+                        <Img fixed={morePost.postThumbnail.fixed} alt={morePost.postThumbnail.title} draggable="false"></Img>
+                      </MorePostsImage>
+                      <h3>{morePost.title}</h3>
+                      <PostInfo>
+                        <Author fixed={morePost.author.profilePicture.fixed} name={morePost.author.name}/>
+                        <Divider>•</Divider>
+                        <BlogDate>{morePost.publishedDate}</BlogDate>
+                      </PostInfo>
+                    </Post>
+                  ))}
+              </PostWrapper>
+              </MorePosts>
+            </Container>
+          </section>
         </Layout>
     )
 }

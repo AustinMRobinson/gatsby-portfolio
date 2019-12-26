@@ -35,8 +35,9 @@ const TileInfo = styled.div`
 
 const Status = styled.p`
     color: ${lightForeground};
+    font-family: "Archivo";
+    font-weight: 700;
     text-transform: uppercase;
-    font-weight: 600;
     font-size: 14px;
     letter-spacing: 1px;
 `

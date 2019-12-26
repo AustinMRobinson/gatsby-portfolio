@@ -36,6 +36,7 @@ const IndexHero = styled(Hero)`
 const Role = styled.p`
     color: ${lightForeground};
     text-transform: uppercase;
+    font-family: "Archivo";
     font-weight: bold;
     font-size: 1rem;
     letter-spacing: 1px;

@@ -45,12 +45,12 @@ const BlogPost = styled.li `
         text-decoration: none;
     }
     h2 {
-        margin-bottom: .6rem;
+        margin-bottom: .4rem;
         transition: all 0.3s;
     }
     p {
         color: ${lightForeground};
-        font-weight: 500;
+        font-family: "Archivo";
     }
     &:hover {
         h2 {

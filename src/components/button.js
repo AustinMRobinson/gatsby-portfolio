@@ -63,7 +63,8 @@ const borderColor = theme.variants("mode", "variant", {
     text-decoration: none;
     text-transform: uppercase;
     text-align: center;
-    font-weight: 600;
+    font-family: "Archivo";
+    font-weight: 700;
     font-size: 14px;
     letter-spacing: 1px;
     transition: all 0.3s;

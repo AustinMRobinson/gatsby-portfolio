@@ -5,6 +5,8 @@ import Container from '../components/container'
 import StyledLink from '../components/styledlink'
 import { foreground, kindaLightForeground, lightForeground, evenMoreTransparent} from "../theme.js"
 
+
+
 const FooterStyles = styled.footer`
     color: ${lightForeground};
     margin-top: 6rem;
@@ -49,6 +51,11 @@ const FooterStyles = styled.footer`
             display: block;
         }
     }
+    @media (max-width: 460px) {
+        p {
+            margin-top: 2rem;
+        }
+    }
 `
 
 const FooterContainer = styled(Container)`
@@ -60,13 +67,15 @@ const FooterContainer = styled(Container)`
         padding: 6rem 2rem 3rem 2rem;
         flex-wrap: wrap;
     }
-    @media (max-width: 420px) {
-        padding: 4rem 1rem 2rem 1rem;
+    @media (max-width: 460px) {
+        padding: 2rem 1rem 2rem 1rem;
     }
 }
 `
 
 const Footer = () => {
+
+    const today = new Date()
 
     const data = useStaticQuery(graphql`
     query {
@@ -87,7 +96,7 @@ const Footer = () => {
                 <li><StyledLink to="/contact">Contact Me</StyledLink></li>
                 <li><StyledLink to="/componentPage">Components</StyledLink></li>
             </ul>
-                <p>Created by {data.site.siteMetadata.author} © 2019</p>
+                <p>{data.site.siteMetadata.author} © {today.getFullYear()}</p>
             </FooterContainer>
         </FooterStyles>
     )

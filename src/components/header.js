@@ -57,6 +57,8 @@ const NavList = styled.ul`
 
 const NavItem = styled(Link)`
     color: ${lightForeground};
+    font-family: "Archivo";
+    font-weight: 500;
     font-size: 0.9rem;
     margin-right: .75rem;
     text-decoration: none;
