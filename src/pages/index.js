@@ -1,6 +1,6 @@
 import React from "react"
 import { useStaticQuery, graphql } from 'gatsby'
-import Layout from '../components/layout'
+import Layout from '../components/layout.js'
 import Head from "../components/head"
 import CTATile from "../components/ctaTile"
 import PageCTA from "../components/pageCTA"

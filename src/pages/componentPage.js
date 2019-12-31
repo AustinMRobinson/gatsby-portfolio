@@ -2,10 +2,11 @@ import React from 'react'
 import styled from 'styled-components'
 import Button from "../components/button.js"
 import Container from "../components/container.js"
-import Layout from "../components/layout.js"
+import Layout from '../components/layout.js'
 import Icon from "../components/icon.js"
 import Hero from "../components/hero"
 import { lightForeground, foreground } from "../theme.js"
+
 
 const ComponentGroup = styled.div`
     padding: 3rem 0;
@@ -59,6 +60,9 @@ const ComponentPage = () => {
                         <StyledIcon name="Photography"></StyledIcon>
                         <StyledIcon name="About Me"></StyledIcon>
                         <StyledIcon name="HP"></StyledIcon>
+                    </ComponentGroup>
+                    <ComponentGroup>
+                        <h2>Test</h2>
                     </ComponentGroup>
                 </Container>
             </section>

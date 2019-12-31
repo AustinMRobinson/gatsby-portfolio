@@ -37,10 +37,9 @@ const AuthorLink = styled(Link)`
     }
   }
   @media (max-width: 460px) {
-  padding: 12px 0;
+  padding-bottom: 12px;
   margin: 4px 0 12px 0;
   width: 100%;
-  border-top: 1px solid ${moreTransparent};
   border-bottom: 1px solid ${moreTransparent};
 }
 `
@@ -49,7 +48,7 @@ const Author = (props) => {
     return (
         <AuthorLink>
             <BlogAuthor>
-                <AuthorImg fixed={props.fixed} draggable="false"></AuthorImg>
+                <AuthorImg objectFit="cover" objectPosition="50% 50%" fixed={props.fixed} draggable="false"></AuthorImg>
                 {props.name}
             </BlogAuthor>
         </AuthorLink>

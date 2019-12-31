@@ -1,9 +1,9 @@
 import React from 'react'
-import Footer from '../components/footer'
-import Header from '../components/header'
+import Footer from './footer'
+import Header from './header'
 import styled, {ThemeProvider, createGlobalStyle} from "styled-components"
-import useTheme from '../usetheme.js';
-import { foreground, layer0 } from "../theme.js"
+import useTheme from '../usetheme';
+import { foreground, layer0 } from "../theme"
 
 const GlobalStyle = createGlobalStyle`
 html {
@@ -13,7 +13,7 @@ body {
   background: ${layer0};
   color: ${foreground};
   ${'' /* border: 12px solid ${layer2}; */}
-  transition: all 0.5s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 h1, h2, h3, h4, h5, h6 {
     color: ${foreground};

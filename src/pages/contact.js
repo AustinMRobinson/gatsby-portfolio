@@ -1,5 +1,5 @@
 import React from "react"
-import Layout from '../components/layout'
+import Layout from '../components/layout.js'
 import Head from "../components/head"
 import Container from "../components/container"
 import Hero from "../components/hero"

@@ -1,12 +1,12 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
 import styled from 'styled-components'
-import Layout from '../components/layout'
+import Layout from '../components/layout.js'
 import Container from "../components/container"
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import Head from "../components/head.js"
 import Hero from "../components/hero.js"
-import { kindaLightForeground, lightForeground, foreground, evenMoreTransparent, layer1 } from "../theme.js"
+import { kindaLightForeground, lightForeground, foreground, transparent, lessTransparent, evenMoreTransparent, layer1 } from "../theme.js"
 import Img from "gatsby-image"
 import Icon from "../components/icon.js"
 import Author from "../components/author.js"
@@ -204,27 +204,6 @@ const PostWrapper = styled.div`
   }
 `
 
-const Post = styled(Link)`
-    width: 48%;
-    padding: 2rem;
-    border: 1px solid ${evenMoreTransparent};
-    text-decoration: none;
-    transition: 0.3s all ease-in-out;
-    h3 {
-      color: ${kindaLightForeground};
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
-    }
-    &:hover {
-      background: ${layer1};
-    }
-    @media (max-width: 768px) {
-      flex: 1 0 100%;
-      margin: 1.5rem 0;
-      padding: 1.3rem;
-  }
-`
-
 const MorePostsImage = styled.div`
     height: 280px;
     overflow: hidden;
@@ -234,6 +213,7 @@ const MorePostsImage = styled.div`
     align-content: center;
     justify-content: center;
     margin-bottom: 1.5rem;
+    box-shadow: 0 16px 32px -10px ${lessTransparent};
     img {
       margin: 0rem;
     }
@@ -244,6 +224,35 @@ const MorePostsImage = styled.div`
         height: 220px;
     }
 `
+
+const Post = styled(Link)`
+    width: 48%;
+    padding: 2rem;
+    border: 1px solid ${evenMoreTransparent};
+    text-decoration: none;
+    transition: 0.3s all ease-in-out;
+    h3 {
+      color: ${kindaLightForeground};
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      transition: 0.3s all ease-in-out;
+    }
+    &:hover {
+      background: ${layer1};
+      h3 {
+        color: ${foreground};
+      }
+      ${MorePostsImage} {
+        box-shadow: 0 16px 32px -10px ${transparent};
+      }
+    }
+    @media (max-width: 768px) {
+      flex: 1 0 100%;
+      margin: 1.5rem 0;
+      padding: 1.3rem;
+  }
+`
+
 
 
 
@@ -284,7 +293,7 @@ const Blog = ({ data }) => {
           </BlogHero>
           <BlogContainer>
             <BlogImage>
-              <BlogImg fixed={data.contentfulBlogPost.postThumbnail.fixed} alt={data.contentfulBlogPost.postThumbnail.title} draggable="false"></BlogImg>
+              <BlogImg objectFit="cover" objectPosition="50% 50%" fixed={data.contentfulBlogPost.postThumbnail.fixed} alt={data.contentfulBlogPost.postThumbnail.title} draggable="false"></BlogImg>
             </BlogImage>
           </BlogContainer>
           <BlogContentContainer>
@@ -298,7 +307,7 @@ const Blog = ({ data }) => {
                 {data.contentfulBlogPost.morePosts.map(morePost => (
                     <Post to={`/blog/${morePost.slug}`} key={morePost}>
                       <MorePostsImage>
-                        <Img fixed={morePost.postThumbnail.fixed} alt={morePost.postThumbnail.title} draggable="false"></Img>
+                        <Img objectFit="cover" objectPosition="50% 50%" fixed={morePost.postThumbnail.fixed} alt={morePost.postThumbnail.title} draggable="false"></Img>
                       </MorePostsImage>
                       <h3>{morePost.title}</h3>
                       <PostInfo>

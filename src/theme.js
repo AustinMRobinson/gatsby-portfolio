@@ -5,6 +5,11 @@ export const layer0 = theme('mode', {
   dark: '#0f0f0f'
 });
 
+export const transparentLayer0 = theme('mode', {
+  light: 'rgba(235, 235, 235, 0.8)',
+  dark: 'rgba(15, 15, 15, 0.8)'
+});
+
 export const layer1 = theme('mode', {
   light: '#f6f6f6',
   dark: '#1a1a1a'

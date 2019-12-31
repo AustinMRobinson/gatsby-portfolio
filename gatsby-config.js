@@ -11,7 +11,7 @@ module.exports = {
       author: 'Austin Robinson',
     },
     plugins: [
-      {
+     {
         resolve: `gatsby-plugin-favicon`,
         options: {
           logo: "./src/favicon.png",

@@ -108,7 +108,7 @@ const Header = (props) => {
         <HeaderStyles>
             <Container>
                 <nav>
-                    <NavLogo>
+                    <NavLogo to="/">
                         <NavIcon title="Austin Robinson Logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" xmlnsXlink="http://www.w3.org/1999/xlink">
                             <path class="st0" d="M0,0v64h64L32,32L0,0z"/>
                             <path class="st0" d="M42.8,0H0v42.5h42.8c11.7,0,21.2-9.5,21.2-21.2S54.5,0,42.8,0z"/>
@@ -117,8 +117,8 @@ const Header = (props) => {
                     <AlignNav>
                         <NavList>
                             <li><NavItem to="/blog">Blog</NavItem></li>
+                            <li><NavItem to="/work">Work</NavItem></li>
                             <li><NavItem to="/about">About Me</NavItem></li>
-                            <li><NavItem to="/contact">Contact Me</NavItem></li>
                             <li><ToggleMode /></li>
                         </NavList>
                         <NavMenu ref={node}>

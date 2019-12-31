@@ -7,7 +7,7 @@ import { foreground, accent, evenLessTransparent, evenMoreTransparent } from '..
 export const StyledMenu = styled.div`
     display: none;
     background: ${evenMoreTransparent};
-    backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(50%) blur(25px);
     box-shadow: 0 18px 36px -18px ${evenLessTransparent};
     width: 100%;
     text-align: left;
@@ -73,8 +73,8 @@ const Menu = ({ open }) => {
       <StyledMenu open={open}>
         <NavMenuList>
             <li><NavItem to="/blog">Blog</NavItem></li>
+            <li><NavItem to="/work">Work</NavItem></li>
             <li><NavItem to="/about">About Me</NavItem></li>
-            <li><NavItem to="/contact">Contact Me</NavItem></li>
         </NavMenuList>
       </StyledMenu>
     )
