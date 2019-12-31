@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'gatsby'
 import Button from '../components/button'
 import styled from 'styled-components'
 import { layer1, lightForeground } from '../theme.js'
@@ -9,6 +10,9 @@ const Tile = styled.div`
     flex: 0 0 48%;
     @media (max-width: 768px) {
     margin-bottom: 3rem;
+  }
+  a {
+      text-decoration: none;
   }
 `
 
@@ -46,6 +50,8 @@ const CTATile = ({
     heading,
     status,
     text,
+    state,
+    link
 }) => (
     <Tile>
         <TileInfo>
@@ -53,7 +59,7 @@ const CTATile = ({
             <Status>{status}</Status>
             <p>{text}</p>
         </TileInfo>
-        <Button size="large" expanded="true" mt="1em">Check it out</Button>
+        <Link to={link}><Button size="large" expanded="true" variant={state === "Disabled" ? "Disabled" : "default"} mt="1em">Check it out</Button></Link>
     </Tile>
     
 )

@@ -113,11 +113,14 @@ const IndexPage = () => {
             tile1Text {
               tile1Text
             }
+            tile1State
             tile2Heading
             tile2Status
             tile2Text {
               tile2Text
             }
+            tile2State
+            tile2link
             page1Heading
             page1Text {
               page1Text
@@ -149,6 +152,10 @@ const tile1Text = data.contentfulHomepage.tile1Text.tile1Text
 const tile2Text = data.contentfulHomepage.tile2Text.tile2Text
 const tile1Status = data.contentfulHomepage.tile1Status
 const tile2Status = data.contentfulHomepage.tile2Status
+const tile1State = data.contentfulHomepage.tile1State
+const tile2State = data.contentfulHomepage.tile2State
+const tile2Link = data.contentfulHomepage.tile2link
+
 
 // Placeholder Data (bc I'm offline currently)
 const page1Heading = data.contentfulHomepage.page1Heading
@@ -160,6 +167,8 @@ const page2Link = data.contentfulHomepage.page2Link
 const page3Heading = data.contentfulHomepage.page3Heading
 const page3Text = data.contentfulHomepage.page3Text.page3Text
 const page3Link = data.contentfulHomepage.page3Link
+
+    console.log(data)
 
     return (
         <Layout>
@@ -178,11 +187,14 @@ const page3Link = data.contentfulHomepage.page3Link
                             heading={tile1Heading}
                             status={tile1Status}
                             text={tile1Text}
+                            state={tile1State}
                         />
                         <CTATile
                             heading={tile2Heading}
                             status={tile2Status}
                             text={tile2Text}
+                            state={tile2State}
+                            link={tile2Link}
                         />
                     </TileWrapper>
                 </Container>

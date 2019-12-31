@@ -12,7 +12,7 @@ const color = theme.variants("mode", "variant", {
     tertiary: { light: "#000000", dark: "#ffffff"},
     success: { light: "#ffffff", dark: "#000000" },
     warning: { light: "#ffffff", dark: "#000000" },
-    disabled: { light: '#adadad', dark: "#737373" }
+    Disabled: { light: '#adadad', dark: "#737373" }
 });
 
 const backgroundColor = theme.variants("mode", "variant", {
@@ -21,7 +21,7 @@ const backgroundColor = theme.variants("mode", "variant", {
     tertiary: { light: "rgba(0,0,0,0)", dark: "rgba(0,0,0,0)"},
     success: { light: "#1da32d", dark: "#52e063"},
     warning: { light: "#c91010", dark: "#f04242"},
-    
+    Disabled: { light: '#e0e0e0', dark: "#2e2e2e" }
 });
 
 const hover = theme.variants("mode", "variant", {
@@ -38,6 +38,7 @@ const borderColor = theme.variants("mode", "variant", {
     tertiary: { light: "rgba(0,0,0,0)", dark: "rgba(0,0,0,0)"},
     success: { light: "rgba(0,0,0,0)", dark: "rgba(0,0,0,0)"},
     warning: { light: "rgba(0,0,0,0)", dark: "rgba(0,0,0,0)"},
+    Disabled: { light: "rgba(0,0,0,0)", dark: "rgba(0,0,0,0)"},
 });
 
 // const display = theme.variants("mode", "expanded", {
@@ -60,6 +61,7 @@ const borderColor = theme.variants("mode", "variant", {
     margin-left: ${props => props.ml};
     margin-right: ${props => props.mr};
     border: 3px solid ${borderColor};
+    cursor: ${props => (props.variant === "Disabled" ? "not-allowed" : "pointer")};
     text-decoration: none;
     text-transform: uppercase;
     text-align: center;
@@ -70,7 +72,6 @@ const borderColor = theme.variants("mode", "variant", {
     transition: all 0.3s;
     color: ${color};
     background: ${backgroundColor};
-    cursor: pointer;
     &:hover {
         background: ${hover};
     }
